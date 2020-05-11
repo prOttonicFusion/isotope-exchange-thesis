@@ -1,0 +1,138 @@
+\documentclass[english,twoside,openright]{HYgradu}
+\usepackage{Preamble}
+\graphicspath{{./figures/}}
+
+% Add subfigure
+\newcommand{\minifig}[1]{  
+   \begin{minipage}[c]{0.3\linewidth}
+      \centering
+      \includegraphics[width=1.1\linewidth]{#1} 
+      \vspace{0mm}
+  \end{minipage}
+}
+
+% Add subfigure with text overlay
+\newcommand{\minifigii}[4]{
+   \begin{minipage}[c]{0.38\linewidth}
+  	\begin{picture}(100,160)
+		\put(0,0){\includegraphics[width=1.15\linewidth]{#1} }
+		\put(#3,#4){\small{\textbf{#2}}}
+	\end{picture} 
+    \end{minipage}
+}
+%-------------------------------------------------------------------------------
+% HEADER & FOOTER
+%-------------------------------------------------------------------------------
+%\fancyhf{}
+%\fancyhead[L]{Otto Lindblom}
+%\fancyhead[R]{014447947}
+%\fancyfoot[R]{Sida \thepage\ av \pageref{LastPage}}
+
+%-------------------------------------------------------------------------------
+% TITLE PAGE & ABSTRACT PAGE
+%-------------------------------------------------------------------------------
+\title{A Molecular Dynamics Study of Hydrogen Isotope Exchange in Tungsten}
+% or
+%\title{Molecular Dynamics Simulations of Hydrogen Isotope Exchange in Tungsten}
+\author{Otto Lindblom}
+\date{\today}
+\level{Master's thesis}
+\subject{}
+\faculty{Faculty of Science}
+\programme{Computational Physics}
+\department{Department of Physics}
+\address{P.O. 64 (Gustaf H\"{a}llstr\"{o}ms gata 2a)\\00014 University of Helsinki}
+\prof{Tommy Ahlgren}
+\censors{Censor1}{Censor2}{}
+\keywords{Diffusion, Hydrogen, Molecular Dynamics, Tungsten}
+\depositeplace{Kumpula Science Library}
+\additionalinformation{}
+\classification{}
+
+% if you want to quote someone special. You can comment this line and there will be nothing on the document.
+%\quoting{Bachelor's degrees make pretty good placemats if you get them laminated.}{Jeph Jacques} 
+
+\begin{document}
+
+% Generate title page.
+\maketitle
+
+% Generate abstract page(s)
+\begin{abstract}
+[Insert abstract here]
+\end{abstract}
+
+\begin{abstract}
+[Abstrakt h\"ar]
+\end{abstract}
+
+\begin{abstract}
+[Abstrakti t\"ah\"an]
+\end{abstract}
+
+% Place ToC
+\mytableofcontents
+
+\mynomenclature
+%\printnomenclature
+
+
+%-------------------------------------------------------------------------------
+% CONSTANTS, VARIABLES & ETC.
+%-------------------------------------------------------------------------------
+\nomenclature{$p$}{Pressure \nomunit{atm}}
+\nomenclature{$V$}{Volume \nomunit{\AA$^3$}}
+\nomenclature{$T$}{Temperature \nomunit{K}}
+\nomenclature{$k$}{Boltzmann constant \nomunit{1.38$\times10^{-23}$ J/K}}
+\nomenclature{$a$}{Lattice constant \nomunit{\AA}}
+%\nomenclature{$a$}{Tungsten lattice contstant \nomunit{3.165 \AA}}
+\nomenclature{$m_{\rm W}$}{Tungsten mean atomic mass \nomunit{183.85 amu}}
+\nomenclature{$m_{\rm H}$}{Protium mean atomic mass \nomunit{1.00784 amu}}
+\nomenclature{$m_{\rm T}$}{Tritium mean atomic mass \nomunit{3.0161 amu}}
+
+
+%-------------------------------------------------------------------------------
+% BODY
+%-------------------------------------------------------------------------------
+
+%--------------------------------------------------------------------
+
+\input{./1_Introduction.tex}
+
+%--------------------------------------------------------------------
+
+\input{./2_Theory.tex}
+
+%--------------------------------------------------------------------
+
+\input{./3_Methods.tex}
+
+%--------------------------------------------------------------------
+
+\input{./4_Results.tex}
+
+%--------------------------------------------------------------------
+
+\input{./5_Conclusion.tex}
+
+%--------------------------------------------------------------------
+
+\input{./6_Acknowledgements.tex}
+
+%-------------------------------------------------------------------------------
+
+\cleardoublepage %fixes the position of bibliography in bookmarks
+\phantomsection
+
+\addcontentsline{toc}{chapter}{\bibname} % This lines adds the bibliography to the ToC
+\bibliographystyle{IEEEtran}
+%\bibliographystyle{unsrt} % numbering 
+%\bibliographystyle{apalike} % name, year
+\renewcommand{\bibname}{References}
+\bibliography{bibliography}{}
+
+%--------------------------------------------------------------------
+%\section*{Bilagor}
+%\addcontentsline{toc}{subsection}{Bilaga 1}
+
+\end{document}

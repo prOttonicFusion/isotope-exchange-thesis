@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Set arguments for plotting progra calls
+#   --nw: do not show individual plot windows
+#   --pltm N: set 'plot element multiplier' as N
+#   --fsize M: set font size to M
+
+args='--nodump --deftype vac --notitle --pltm 1.8 --fsize 20 --nw'
+
+python plot_1Vac_isoEx_comp.py
+python plot_2Vac_isoEx_comp.py
+
+
+
+
+
+# MONOVACANCY ISOTOPE EXCHANGE:
+# ---------------------------------
+#python ~/Acclab/isotope_exchange/plotHinDefect.py ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_400K_1450ns/HinVac.out --nodump $args --toname _400K
+#python ~/Acclab/isotope_exchange/plotHinDefect.py ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_450K_600ns/HinVac.out --nodump $args  --toname _450K
+#python ~/Acclab/isotope_exchange/plotHinDefect.py ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_500K_100ns/HinVac.out --nodump $args --toname _500K
+#python ~/Acclab/isotope_exchange/plotHinDefect.py ~/Acclab/isoEx_results/1Vac_2000W_6H_20T_450K/HinVac.out --notitle $args --toname _inverted
+
+
+
+
+# MONOVACANCY ISOEX COMPARISION:
+# ---------------------------------
+#python ~/Acclab/isotope_exchange/plotComparision.py -i ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_450K_600ns/HinVac.out ~/Acclab/isoEx_results/1Vac_2000W_0H_6T_450K_450ns/HinVac.out $args --labels 'IsoEx' 'Diffusion' --xlim 400 --toname _450K
+#python ~/Acclab/isotope_exchange/plotComparision.py -i ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_400K_1450ns/HinVac.out ~/Acclab/isoEx_results/1Vac_2000W_0H_6T_400K_1000ns/HinVac.out $args --labels 'IsoEx' 'Diffusion' --xlim 450 --toname _400K
+#python ~/Acclab/isotope_exchange/plotComparision.py -i ~/Acclab/isoEx_results/1Vac_2000W_20H_6T_500K_100ns/HinVac.out ~/Acclab/isoEx_results/1Vac_2000W_0H_6T_500K_100ns/HinVac.out $args --labels 'IsoEx' 'Diffusion' --xlim 100 --toname _500K
+
+
+
+
+
+# DISLOCATION ISOTOPE EXCHANGE
+# ------------------------------
+#python ~/Acclab/isotope_exchange/plotHinDisl.py ~/Acclab/isoEx_results/disloc_isoEx_200ns/HinDisl.out --notitle --nodump --fsize 18 --pltm 1.0 --toname _200ns
+
+
+# DISLOC ISOEX COMPARISION:
+# ---------------------------------
+#python ~/Acclab/isotope_exchange/plotComparision.py -i ~/Acclab/isoEx_results/disloc_isoEx_200ns_n/HinDisl.out ~/Acclab/isoEx_results/disloc_isoEx_200ns_vac/HinDisl.out --notitle --fsize 18 --pltm 1.5 --labels 'T + H' 'Only T' --xlim 400 --toname _450K
+#python ~/Acclab/isotope_exchange/plotComparision.py -i ~/Acclab/isoEx_results/disloc_isoEx_500ns_n/HinDisl.out ~/Acclab/isoEx_results/disloc_isoEx_500ns_vac/HinDisl.out --notitle --fsize 18 --pltm 1.5 --labels 'T + H' 'Only T' --toname _450K
