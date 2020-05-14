@@ -269,6 +269,12 @@ TSWLatexianTemp*
 # expex forward references with \gathertags
 *-tags.tex
 
+# python cache
+__pycache__/
+
+# Emacs BUP files
+*~
+
 # standalone packages
 *.sta
 
