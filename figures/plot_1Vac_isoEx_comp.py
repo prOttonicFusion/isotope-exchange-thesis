@@ -2,8 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotStyle import *
 
-#path = '/media/otto/myDrive/isoEx_NVT/1Vac_isoEx_results/'
-path = '/../../isoEx_NVT/1Vac_isoEx_results/'
+path = '/home/otto/Drive2/isoEx_NVT/1Vac_isoEx_results/'
 
 # ============================== READ DATA ==============================
 # Function for reading columnsToRead=[i,j,...] columns from file 'fname'
