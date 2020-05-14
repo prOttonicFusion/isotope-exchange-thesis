@@ -56,14 +56,14 @@ plt.figure(1,fsize)
 
 # Plotting function
 def plotter(x, y, isoExStle, lbl):
-    plt.plot(x, y, isoExStle, label=lbl)
+    plt.plot(x, y, **isoExStle, label=lbl)
 
 # 400 K
 plt.subplot(4,1,1)
 init, final, step = [0,-1,10]
-plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -75,9 +75,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 450 K
 plt.subplot(4,1,2)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -89,9 +89,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 500 K
 plt.subplot(4,1,3)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -103,8 +103,8 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 500 K; inverse isotopes
 plt.subplot(4,1,4)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoExStl[1], isoExLbls[1])
+plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -123,14 +123,14 @@ plt.figure(2,fsize)
 
 # Plotting function
 def plotter(x, y, isoExStle, lbl):
-    plt.semilogx(x, y, isoExStle, label=lbl)
+    plt.semilogx(x, y, **isoExStle, label=lbl)
 
 # 400 K
 plt.subplot(4,1,1)
 init, final, step = [0,-1,10]
-plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -142,9 +142,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 450 K
 plt.subplot(4,1,2)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -156,9 +156,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 500 K
 plt.subplot(4,1,3)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoExStl[2], isoExLbls[2])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -170,8 +170,8 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 # 500 K; inverse isotopes
 plt.subplot(4,1,4)
 init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoExStl[1], isoExLbls[1])
+plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)

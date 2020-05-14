@@ -46,7 +46,17 @@ plt.rcParams['axes.labelweight'] = 'normal' # axis labels bold/normal
 font = {'family': 'DeJaVu Serif', 'color':  'black', 'weight': 'bold','size': fsize+1}
 
 # Plot marker & line styles
-isoExStl = ['r-', 'b--', 'c:']   # H-isoEx, T-isoEx, T-diff
+#H_iso_color, T_iso_color, T_diff_color = ['#40bad5','#035aa6','#120136']  # All-blue 
+H_iso_color, T_iso_color, T_diff_color = ['#ffa41b','#0de2ea','#025297']  # Blue-orange 
+#H_iso_color, T_iso_color, T_diff_color = ['#003f5c','#bb053c','#ffa41b']  # Germany
+#H_iso_color, T_iso_color, T_diff_color = ['#ff7f0e','#ff7f0e','#2ca02c']  # Matplotlib default-ish
+
+H_iso_style = {'linestyle':':', 'color':H_iso_color, 'markerfacecolor':H_iso_color, 'markeredgecolor':H_iso_color}
+T_iso_style = {'linestyle':'-', 'color':T_iso_color, 'markerfacecolor':T_iso_color, 'markeredgecolor':T_iso_color}
+T_diff_style = {'linestyle':'--', 'color':T_diff_color, 'markerfacecolor':T_diff_color, 'markeredgecolor':T_diff_color}
+isoEx_style = {'H_iso':H_iso_style, 'T_iso':T_iso_style, 'T_diff':T_diff_style} 
 
 # Labels
-isoExLbls = ['H; isoEx', 'T; isoEx', 'T; diffusion']
+isoEx_labels = {'H_iso':'H; isoEx', 'T_iso':'T; isoEx', 'T_diff':'T; diffusion'}
+
+

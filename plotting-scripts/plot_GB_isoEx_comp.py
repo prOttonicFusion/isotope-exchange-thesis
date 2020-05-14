@@ -46,13 +46,13 @@ plt.figure(1,fsize)
 
 # Plotting function
 def plotter(x, y, isoExStle, lbl):
-    plt.plot(x, y, isoExStle, label=lbl)
+    plt.plot(x, y, **isoExStle, label=lbl)
 
 # 500 K
-init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoExStl[2], isoExLbls[2])
+init, step, final = [0,100,-1]
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -72,13 +72,13 @@ plt.figure(2,fsize)
 
 # Plotting function
 def plotter(x, y, isoExStle, lbl):
-    plt.semilogx(x, y, isoExStle, label=lbl)
+    plt.semilogx(x, y, **isoExStle, label=lbl)
 
 # 500 K
-init, step, final = [0,10,-1]
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoExStl[0], isoExLbls[0])
-plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoExStl[1], isoExLbls[1])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoExStl[2], isoExLbls[2])
+init, step, final = [0,100,-1]
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
