@@ -60,7 +60,7 @@ plt.text(100, 10.1, '2-Vac; 500K', font)
 
 # Show & save figure                                                                                        
 plt.tight_layout()                                                                                   
-plt.savefig('2Vac_isoEx_HT.png')                                                                     
+plt.savefig('../figures/2Vac_isoEx_HT.png')                                                                     
 plt.show()  
 
 # ------------------------ H&T isoEx vs diff log  --------------------------
@@ -84,7 +84,7 @@ leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 # Show & save figure                                                                                        
 plt.tight_layout()                                                                                   
-plt.savefig('2Vac_isoEx_HT_log.png')                                                                     
+plt.savefig('../figures/2Vac_isoEx_HT_log.png')                                                                     
 plt.show()  
 
 print('Done!')

@@ -52,7 +52,7 @@ plt.tight_layout(1, rect=[0, 0, 0.9, 1])
 
 # Show & save figure                                                                                       
 #plt.tight_layout()                                                                                   
-plt.savefig('Ebind.png')                                                                     
+plt.savefig('../figures/Ebind.png')                                                                     
 plt.show()   
 
 print('Done!')

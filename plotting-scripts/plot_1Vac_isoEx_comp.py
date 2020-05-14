@@ -114,7 +114,7 @@ plt.text(700, 5.3, '(iv) 500 K; inverted', font)
 
 # Show & save figure                                                                                       
 plt.tight_layout()                                                                                   
-plt.savefig('1Vac_isoEx_HT.png')                                                                     
+plt.savefig('../figures/1Vac_isoEx_HT.png')                                                                     
 plt.show()   
 
 
@@ -181,7 +181,7 @@ leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 # Show & save figure                                                                                       
 plt.tight_layout()                                                                                   
-plt.savefig('1Vac_isoEx_HT_log.png')                                                                     
+plt.savefig('../figures/1Vac_isoEx_HT_log.png')                                                                     
 plt.show() 
 
 print('Done!')

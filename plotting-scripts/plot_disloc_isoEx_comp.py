@@ -63,7 +63,7 @@ plt.ylabel(ylbl)
 
 # Show & save figure                                                                                       
 plt.tight_layout()                                                                                   
-plt.savefig('disloc_isoEx_HT.png')                                                                     
+plt.savefig('../figures/disloc_isoEx_HT.png')                                                                     
 plt.show()   
 
 
@@ -89,7 +89,7 @@ leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 # Show & save figure                                                                                       
 plt.tight_layout()                                                                                   
-plt.savefig('disloc_isoEx_HT_log.png')                                                                     
+plt.savefig('../figures/disloc_isoEx_HT_log.png')                                                                     
 plt.show() 
 
 print('Done!')
