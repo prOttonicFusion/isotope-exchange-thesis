@@ -19,10 +19,27 @@ where $m_i$ is the mass of atom i, positioned at $\mathbf{r}_i$.
 The force $\mathbf{F}_i$ acting on each particle is determined by the interatomic potential $V(\mathbf{r}_i)$ and can be used to calculate the acceleration of each particle. 
 The new positions and velocities are then simply functions of the acceleration and the simulation time step $\Delta t$. 
 The simulation then proceeds through repeated evaluations of the equations of motion, updating the system in increments of $\Delta t$ time units. 
-In order to avoid catastrophic errors in the conservation of energy, the time step must be shorter than the inverse vibrational frequency of any process in the system, typically around 1 fs. 
+In order to avoid catastrophic errors in the conservation of energy, the time step must be shorter than the inverse vibrational frequency of any process in the system, typically around 1 fs.
 
-% [Periodic boundaries]
+% [Neighbor lists & force cutoff]
+In the simplest form of a molecular dynamics algorithm, the number of calculations performed scales as $O(N^2)$, where $N$ is the number of atoms. 
+In a typical simulation, however, the particles only interact with a limited number of neighbors and long range interactions can be safely ignored. 
+The most typical way of doing this is by declaring a cutoff radius for the force calculations, with only particles within this radius from particle $i$ taken into account when evaluating $\mathbf{F}_i(\mathbf{r}_i,t)$. 
+This theoretically reduces the scaling of the algorithm to $O(N)$.
 
+% [Periodic boundaries] 
+Despite the use of a force cutoff, most real materials are still far too large to be simulated accurately.
+For example, a typical metal has a number density of around $5\cdot 10^{22}$ atoms/cm$^3$, meaning that simulating even just a $100\times 100 \times 100$ nm$^3$ block of metal, generally considered to be the lower limit of a bulk material, would require us to keep track of $5\cdot 10^7$ atoms.
+A common way of 'cheating' is through the use of \textit{periodic boundary conditions}. 
+This involves % add formulas for momentum across boundaries
+The resulting behavior is visualized in fig. (\ref{Fig:pbcs}).
+
+\begin{figure}[!ht]
+\center
+\includegraphics[width=0.75\linewidth]{pbc.png}
+\caption{A visualization of periodic boundary conditions in a 2D simulation cell. The cells with dashed lines represent virtual copies}
+\label{Fig:pbcs}
+\end{figure}
 
 % [Thermostats, barostats]
 
@@ -82,7 +99,7 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \subsection{Interatomic potentials}
 
 In an MD simulation, potential energies of simulated particles are calculated using so called interatomic potentials - mathematical functions designed to approximately emulate the interactions between atoms. 
-These potentials are usually based upon the Born-Oppenheimer model, i.e. the electrons of alla atoms are permanently in the ground state and all interactions depend purely on the interatomic distance \cite{born1927quantentheorie}. 
+These potentials are usually based upon the Born-Oppenheimer model, i.e. that the electrons of alla atoms are permanently in the ground state and all interactions depend purely on the interatomic distance \cite{born1927quantentheorie}. 
 In general terms, the potential energy of an atomistic system can be written as
 \begin{align}
 V_{tot} = \sum_i^N V_1(\mathbf{r}_i) + \sum_{i,j}^N V_2(\mathbf{r}_i, \mathbf{r}_j) +  \sum_{i,j,k}^N V_3(\mathbf{r}_i, \mathbf{r}_j, \mathbf{r}_k) + ...
@@ -97,24 +114,29 @@ V_{tot} = \sum_i \sum_{j>i} V_2(\mathbf{r}_i, \mathbf{r}_j) + \sum_i \sum_{j>i} 
 \end{align}
 Potentials employing terms of a higher order than two are referred to as many-body potentials, while those using only the two first terms are pair potentials.
 
-The atomic structure of metals allows the to be described particularly well using the so called Embedded Atom Method (EAM) formalism, giving the potential energy in the form
+The atomic structure of metals allows the to be described particularly well using the so called \textit{Embedded Atom Method} (EAM) formalism, giving the potential energy in the form
 \begin{align}
 V_{tot} = \sum_i^N F_i\, \bigg( \sum_j \rho\, (\mathbf{r}_{ij}) \bigg) + \frac{1}{2} \sum^N_{ij} V_2 (\mathbf{r}_{ij})
 \end{align}
 where  $F_i$ is a function of the summed electron density $\rho (\mathbf{r}_{ij})$ and $\mathbf{r}_{ij}$ denotes the distance $| \mathbf{r}_i - \mathbf{r}_j |$ between the $i$th and $j$th atoms. \cite{EAMmodel,dudarevEAMpotential}. 
 
-For covalently bonded materials, is is often more accurate to use a Bond Order Potential (BOP), generally presented as
+For covalently bonded materials, is is often more accurate to use a \textit{Bond Order Potential} (BOP), generally presented as
 \begin{align}
 V_{ij}(r_{ij}) =bV_{ijk}V_{\rm attractive}(r_{ij}) V_ {\rm repulsive}
 \end{align}
 Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type. \cite{tersoff1988new, brenner1990empirical, finnis1984simple} Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into the pair-terms.
 
+\section{Parallel Algorithms}
+As we all know, the volume of a cube is related to the its side length as $V=a^3$. 
+Applying this to atomic systems, this means that if we double the side length of a cubical simulation cell, the number of atoms increases by a factor of eight. 
+Correspondingly, the computational load also increases by a factor of between 8 and 64, depending on the use and size of neighbor lists.
 
 % ---------------------------------------------------------------------------------------------------
 \section{Molecular Dynamics for Simulating Isotope Exchange}
-% ---------------------------------------------------------------------------------------------------
-% [A few words about LAMMPS ]
-% Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) \cite{lammpsMD}, 
+% --------------------------------------------------------------------------------------------------- 
+The molecular dynamics code used in this work was the Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) developed by Sandia National Laboratories \cite{lammpsMD}. 
+LAMMPS is a free and open-source code, utilizing the Message Passing Interface (MPI) for running spatially parallelized parallelized MD simulations.
+In addition, LAMMPS also provides a scripting language, which can be used to set input parameters and run simulations, but also contains tools for creating and manipulating lattices as well as simple simulation cells.    
 
 The interatomic potential of choice for most of our simulations was the W-H-He EAM potential developed by Bonny \textit{et al.} and referred to as 'EAM1' in \cite{bonny2014binding}. 
 The W-W interaction part of this potential is the same as 'EAM2' developed by Marinica \textit{et al.} in \cite{marinica2013interatomic} and well-known for providing elastic constants and point defect, dislocation and grain boundary properties in good agreement with Density Functional Theory (DFT) calculations and experiments \cite{bonny2014many}. 
