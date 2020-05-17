@@ -124,7 +124,7 @@ The W-H-He potential, referred hereafter to as just 'EAM1', has been shown to re
 % ===================================================================================================
 \chapter{Simulation Setups}
 % ===================================================================================================
-We have studied isotope exchange in four common crytsallographic defect systems in tungsten. 
+We have studied isotope exchange in four common crystallographic defect systems in tungsten. 
 Regardless of the simulated defect, each simulation followed the same general pattern. 
 First, a simulation cell of bulk W containing the defect was created and allowed to reach a minimum energy configuration by first using numerical minimization and then relaxation through repeatedly heating and cooling the system during short MD cycles. 
 The method of energy minimzation used in all simulations is a Polak-Ribi\`{e}re conjugate gradient algorithm \cite{polak1969note}, used to iteratively adjust atom coordinates until a local energy minimum was found. 
@@ -187,14 +187,14 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 
 
 % ---------------------------------------------------------------------------------------------------
-\section{Vacanies}
+\section{Vacancies}
 % ---------------------------------------------------------------------------------------------------
 In the vacancy case, a monovacancy was created by removing the middlemost W atom of a $10\times 10 \times 10$ unit cell (2000 atom) W lattice. 
-As seen in fig. \ref{Fig:monovac_system}, six T atoms were then added to the vacancy at their lowest energy positions \cite{heinola2010hydrogen}, i.e. at the octahedral interstitial sites, forming a square bipyramid. 
-A total of 19 H atoms were then deposited to randomly chose tetragonal interstitial sites around the simulation W lattice, bringing the (H+T)/W ratio to 0.0125. 
+As seen in fig. (\ref{Fig:monovac_system}), six T atoms were then added to the vacancy at their lowest energy positions \cite{heinolaTungstenDFT}, i.e. at the octahedral interstitial sites, forming a square bipyramid. 
+A total of 19 H atoms were then deposited to randomly chosen tetragonal interstitial sites around the simulation W lattice, bringing the (H+T)/W ratio to 0.0125. 
 The T/H ratio, on the other hand, is 0.32.
 
-A divacancy system was constructed similarly by instead removing two neighboring W atoms and adding 10 T atoms to the defect.
+A divacancy system was constructed in a similar fashion by removing two neighboring W atoms and adding a total of 10 T atoms to the defect.
 
 \begin{figure}[!ht]
 \center
@@ -207,7 +207,7 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 % ---------------------------------------------------------------------------------------------------
 \section{Dislocations}
 % ---------------------------------------------------------------------------------------------------
-In the dislocation case, we have created a 1/2\hkl[1 1 1]\hkl{1 0 0} edge dislocation, in a $109.0 \times 136.8 \times 18.4$ $\AA^3$ tungsten super cell with the $x$, $y$ and $z$ axes oriented along the crystal directions  \hkl[1 1 1], \hkl[1 1 -2] and \hkl[-1 1 0] respectively. 
+In the dislocation case, we have created a 1/2\hkl[1 1 1]\hkl{1 0 0} edge dislocation, in a $109.0 \times 136.8 \times 18.4$ $\AA^3$ tungsten super cell with the $x$, $y$ and $z$ axes oriented along the crystal directions  \hkl[1 1 1], \hkl[1 1 -2] and \hkl[-1 1 0] respectively, as shown in fig. (\ref{Fig:disloc_system}). 
 The supercell was then divided into three equally thick slices, parallel to the $xz$ plane and a dislocation introduced through the addition of a \hkl{1 1 1} atom plane (parallel to the $yz$ plane) from to the middlemost slice. 
 In order to facilitate the formation of a natural dislocation and to enable the use of periodical boundary conditions, the atom positions in the middle slice were finally compressed slightly.
 
