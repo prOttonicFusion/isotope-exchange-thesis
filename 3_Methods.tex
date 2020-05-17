@@ -31,8 +31,8 @@ This theoretically reduces the scaling of the algorithm to $O(N)$.
 Despite the use of a force cutoff, most real materials are still far too large to be simulated accurately.
 For example, a typical metal has a number density of around $5\cdot 10^{22}$ atoms/cm$^3$, meaning that simulating even just a $100\times 100 \times 100$ nm$^3$ block of metal, generally considered to be the lower limit of a bulk material, would require us to keep track of $5\cdot 10^7$ atoms.
 A common way of 'cheating' is through the use of \textit{periodic boundary conditions}. 
-This involves % add formulas for momentum across boundaries
-The resulting behavior is visualized in fig. (\ref{Fig:pbcs}).
+This means that particles exiting the region of space confined by the simulation cell borders re-appear on the opposite side, as visualized in fig. (\ref{Fig:pbcs}). 
+Since also interatomic forces are allowed to interact over cell borders, we effectively have the cell surrounded by infinitely many copies of itself.
 
 \begin{figure}[!ht]
 \center
@@ -40,6 +40,9 @@ The resulting behavior is visualized in fig. (\ref{Fig:pbcs}).
 \caption{A visualization of periodic boundary conditions in a 2D simulation cell. The cells with dashed lines represent virtual copies}
 \label{Fig:pbcs}
 \end{figure}
+
+With a perfect lattice, a simulation cell with periodic boundary conditions accurately emulates a bulk material. 
+With various defects introduced, we, however, have to make sure that the cell is large enough for the created strain field not to overlap with itself, possibly affecting the results.
 
 % [Thermostats, barostats]
 
