@@ -45,8 +45,24 @@ With a perfect lattice, a simulation cell with periodic boundary conditions accu
 With various defects introduced, we, however, have to make sure that the cell is large enough for the created strain field not to overlap with itself, possibly affecting the results.
 
 % [Thermostats, barostats]
+Real systems are seldom isolated and exchange heat with their surroundings in a number of ways. 
+In order to sample a non-isolated thermodynamic ensemble, we need to manually control the temperature of our simulation. 
+Temperature of an atomic system is defines as
+\begin{align}
+T(t) = \frac{1}{k_{\text{B}}N_f}\sum_{i}\left[ m_iv_{i,x}^2(t) + m_iv_{i,y}^2(t) + m_iv_{i,z}^2(t)\right]
+\end{align}
+where $N_f$ is the number of degrees of freedom and $v_{i}$ is the velocity of atom $i$. 
+It is therefore easy to see how we can control the temperature by scaling atomic velocities.
+A common and relatively simple way of doing this is called the \textit{Berendsen thermostat} and defined as
+\begin{align}
+\frac{dT}{dt} = \frac{T_0-T}{\tau}
+\end{align}
+where $T_0$ is the target temperature and $\tau$ a time constant \cite{berendsen1984molecular}. 
+Despite its high efficiency, the Berendsen thermostat is not actually producing a correct canonical ensemble and is prone to causing various artifacts.
 
-
+The \textit{Nos\'{e}-Hoover thermostat}, on the other hand, accurately samples the canonical ensamble \cite{nose1984unified}. 
+Being a so called \textit{extended system method}, the Nos\'{e}-Hoover thermostat makes use of a virtual particle reservoir, acting as a heat bath. 
+Since this requires equations of motions to be evaluated both for the actual particles and the virtual reservoir, the gained physical accuracy comes at higher computational cost.
 
 % --------------- MD schematic ------------------------------------------------------------------------------------
 \begin{figure}
