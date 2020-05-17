@@ -2,8 +2,19 @@
 \chapter{Simulations}
 % ===================================================================================================
 
-We have studied isotope exchange in four common crystallographic defect systems in tungsten. 
-Regardless of the simulated defect, each simulation followed the same general pattern. 
+The molecular dynamics code used in this work was the Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) developed by Sandia National Laboratories \cite{lammpsMD}. 
+LAMMPS is a free and open-source code, utilizing the Message Passing Interface (MPI) for running spatially parallelized parallelized MD simulations.
+In addition, LAMMPS also provides a scripting language, which can be used to set input parameters and run simulations, but also contains tools for creating and manipulating lattices as well as simple simulation cells.    
+
+The interatomic potential of choice for most of our simulations was the W-H-He EAM potential developed by Bonny \textit{et al.} and referred to as 'EAM1' in \cite{bonny2014binding}. 
+The W-W interaction part of this potential is the same as 'EAM2' developed by Marinica \textit{et al.} in \cite{marinica2013interatomic} and well-known for providing elastic constants and point defect, dislocation and grain boundary properties in good agreement with Density Functional Theory (DFT) calculations and experiments \cite{bonny2014many}. 
+The W-H-He potential, referred hereafter to as just 'EAM1', has been shown to relatively accurately recreate the interactions of H with both point defects and dislocations in W \cite{bonny2014binding, grigorev2015interaction}. 
+
+
+% ---------------------------------------------------------------------------------------------------
+\section{Simulation Setups}
+% ---------------------------------------------------------------------------------------------------
+Although the simulations differ largely from defect to defect, a general pattern can be extracted for all isotope exchange simulations. 
 First, a simulation cell of bulk W containing the defect was created and allowed to reach a minimum energy configuration by first using numerical minimization and then relaxation through repeatedly heating and cooling the system during short MD cycles. 
 The method of energy minimzation used in all simulations is a Polak-Ribi\`{e}re conjugate gradient algorithm \cite{polak1969note}, used to iteratively adjust atom coordinates until a local energy minimum was found. 
 
@@ -20,7 +31,7 @@ If the distance exceeds a threshold of $d_{\rm{rmv}} =$ 14 \AA, i.e. ca 4.5 unit
 
 
 % --------------- IsoEx MD ------------------------------------------------------------------------------------
-\begin{figure}
+\begin{figure}[!ht]
 \begin{center}
 % Define block styles
 \tikzset{
@@ -28,7 +39,7 @@ decision/.style = {diamond, draw, fill=green!40,
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt},
 block/.style = {rectangle, draw, fill=cyan!30, 
     text width=12em, text centered, rounded corners, minimum height=2em},
-smallblock/.style = {block, text width=5em},
+smallblock/.style = {block, text width=7em},
 cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
     minimum height=2em}
     }
@@ -39,21 +50,24 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \begin{tikzpicture}
 \matrix (m)[matrix of nodes, column  sep=0.0cm,row  sep=5mm, align=center, nodes={rectangle,draw, anchor=south} ]{
    |[block] (initI)| {Create simulation cell containing defect} & \\
-   |[block] (initII)| {Relax \& add hydrogen} & \\
-    |[block] (MD)| {Run MD for 5000 time steps}          &  \\
-    |[block] (Calcd)| {Calculate $d_i$}          &  \\
-   |[decision] (IsOut)| {$d_i > d_{\rm{rmv}}$?}              &  \\
-       & |[smallblock] (Rmv)| {Remove $i$th T atom}         &  \\
+   |[block] (initII)| {Relax \& Deposit H} & \\
+    |[block] (MD)| {Run MD for 5000 steps}          &  \\
+    |[block] (DelT)| {Delete T atoms for which $d_i > d_{\text{rmv}}$}          &  \\
+%    |[block] (Calcd)| {Calculate $d_i$}          &  \\
+%    |[decision] (IsOut)| {$d_i > d_{\rm{rmv}}$?}              &  \\
+%       & |[smallblock] (Rmv)| {Remove $i$th T}         &  \\
    |[decision] (IsEnd)| {End condition reached?}              &  \\
    |[block] (End)| {Save results \& quit}   & \\
 };
 \path [>=latex,->] (initI) edge (initII);
 \path [>=latex,->] (initII) edge (MD);
-\path [>=latex,->] (MD) edge (Calcd);
-\path [>=latex,->] (Calcd) edge (IsOut);
-\draw [>=latex,->] (IsOut.east) -| node[above, near start] {yes} (Rmv.north);
-\draw [>=latex,->] (IsOut.south) -- node[right] {no}(IsEnd);
-\draw [>=latex,->] (Rmv.south) |- (IsEnd.north);
+\path [>=latex,->] (MD) edge (DelT);
+\path [>=latex,->] (DelT) edge (IsEnd);
+%\path [>=latex,->] (MD) edge (Calcd);
+%\path [>=latex,->] (Calcd) edge (IsOut);
+%\draw [>=latex,->] (IsOut.east) -| node[above, near start] {yes} (Rmv.north);
+%\draw [>=latex,->] (IsOut.south) -- node[right] {no}(IsEnd);
+%\draw [>=latex,->] (Rmv.south) |- (IsEnd.north);
 \draw [>=latex,->] (IsEnd.west) -- node[above] {no} ++(-2,0cm) |- (MD.west);
 \draw [>=latex,->] (IsEnd.south) -- node[right] {yes}(End);
 \end{tikzpicture}
@@ -65,9 +79,9 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 
 
 % ---------------------------------------------------------------------------------------------------
-\section{Vacancies}
+\subsection{Vacancies}
 % ---------------------------------------------------------------------------------------------------
-In the vacancy case, a monovacancy was created by removing the middlemost W atom of a $10\times 10 \times 10$ unit cell (2000 atom) W lattice. 
+In the vacancy case, a monovacancy was created by removing the middlemost atom of a $10\times 10 \times 10$ unit cell (2000 atom) W lattice. 
 As seen in fig. (\ref{Fig:monovac_system}), six T atoms were then added to the vacancy at their lowest energy positions \cite{heinolaTungstenDFT}, i.e. at the octahedral interstitial sites, forming a square bipyramid. 
 A total of 19 H atoms were then deposited to randomly chosen tetragonal interstitial sites around the simulation W lattice, bringing the (H+T)/W ratio to 0.0125. 
 The T/H ratio, on the other hand, is 0.32.
@@ -83,7 +97,7 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 \end{figure}
 
 % ---------------------------------------------------------------------------------------------------
-\section{Dislocations}
+\subsection{Dislocations}
 % ---------------------------------------------------------------------------------------------------
 In the dislocation case, we have created a 1/2\hkl[1 1 1]\hkl{1 0 0} edge dislocation, in a $109.0 \times 136.8 \times 18.4$ $\AA^3$ tungsten super cell with the $x$, $y$ and $z$ axes oriented along the crystal directions  \hkl[1 1 1], \hkl[1 1 -2] and \hkl[-1 1 0] respectively, as shown in fig. (\ref{Fig:disloc_system}). 
 The supercell was then divided into three equally thick slices, parallel to the $xz$ plane and a dislocation introduced through the addition of a \hkl{1 1 1} atom plane (parallel to the $yz$ plane) from to the middlemost slice. 
@@ -101,7 +115,7 @@ The dislocation, together with its periodic images, is visualized using a defect
 \end{figure}
 
 % ---------------------------------------------------------------------------------------------------
-\section{Grain Boundaries}
+\subsection{Grain Boundaries}
 % ---------------------------------------------------------------------------------------------------
 % $\Sigma$5\hkl{310}/\hkl[001]
 For simulating isotope exchange in W grain boundaries, we used a system containing an arbitrarily chosen \hkl(310)\hkl[001] tilt grain boundary. The simulation cell was created by growing together two separate tungsten lattices, each rotated through $\pm18.43^\circ$, respectively, around the $z$-axis. 
