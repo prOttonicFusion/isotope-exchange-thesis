@@ -151,20 +151,17 @@ Applying this to atomic systems, this means that if we double the side length of
 Correspondingly, the computational load also increases by a factor of between 8 and 64, depending on the use and size of neighbor lists.
 
 % ---------------------------------------------------------------------------------------------------
-\section{Molecular Dynamics for Simulating Isotope Exchange}
+\section{Analysis of the Results}
 % --------------------------------------------------------------------------------------------------- 
-The molecular dynamics code used in this work was the Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) developed by Sandia National Laboratories \cite{lammpsMD}. 
-LAMMPS is a free and open-source code, utilizing the Message Passing Interface (MPI) for running spatially parallelized parallelized MD simulations.
-In addition, LAMMPS also provides a scripting language, which can be used to set input parameters and run simulations, but also contains tools for creating and manipulating lattices as well as simple simulation cells.    
+For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
+Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
 
-The interatomic potential of choice for most of our simulations was the W-H-He EAM potential developed by Bonny \textit{et al.} and referred to as 'EAM1' in \cite{bonny2014binding}. 
-The W-W interaction part of this potential is the same as 'EAM2' developed by Marinica \textit{et al.} in \cite{marinica2013interatomic} and well-known for providing elastic constants and point defect, dislocation and grain boundary properties in good agreement with Density Functional Theory (DFT) calculations and experiments \cite{bonny2014many}. 
-The W-H-He potential, referred hereafter to as just 'EAM1', has been shown to relatively accurately recreate the interactions of H with both point defects and dislocations in W \cite{bonny2014binding, grigorev2015interaction}. 
-
+In practice, this was performed by parsing the dump files with a simple Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the number of H and T in the defect as a function of time.
 
 % ===================================================================================================
-\chapter{Simulation Setups}
+\chapter{Simulations}
 % ===================================================================================================
+
 We have studied isotope exchange in four common crystallographic defect systems in tungsten. 
 Regardless of the simulated defect, each simulation followed the same general pattern. 
 First, a simulation cell of bulk W containing the defect was created and allowed to reach a minimum energy configuration by first using numerical minimization and then relaxation through repeatedly heating and cooling the system during short MD cycles. 
