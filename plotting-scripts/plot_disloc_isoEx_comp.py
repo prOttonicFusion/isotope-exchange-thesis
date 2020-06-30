@@ -19,11 +19,15 @@ def readData(fname, columnsToRead):
     return np.array(data)
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
+tTH_isoEx_400K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
+tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_250ns/HinDisl.out', [0,1])
 tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
 tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_250ns/HinDisl.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
+tTH_isoEx_400K[:,0] *= cf
+tT_diff_400K[:,0] *= cf
 tTH_isoEx_500K[:,0] *= cf
 tT_diff_500K[:,0] *= cf
 
@@ -32,7 +36,7 @@ tT_diff_500K[:,0] *= cf
 print('Drawing figures ...')
 
 # Figure dimensions [x, y]
-fsize = [6.0, 3.5]
+fsize = [6.0, 7.0]
 
 # Upper x-axis limit [ns]
 xulim = 250.0
@@ -48,7 +52,20 @@ plt.figure(1,fsize)
 def plotter(x, y, isoExStle, lbl):
     plt.plot(x, y, **isoExStle, label=lbl)
 
+
+# 400 K
+plt.subplot(2,1,1)
+init, step, final = [0,10,-1]
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
+plt.xlim((1, xulim))
+plt.ylabel(ylbl)
+plt.text(50, 122.5, '(i) 400 K', font)
+plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+
 # 500 K
+plt.subplot(2,1,2)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
@@ -56,7 +73,7 @@ plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_lab
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-#plt.text(400, 5.3, '(iii) 500 K', font)
+plt.text(50, 122.5, '(ii) 500 K', font)
 #leg = plt.legend()
 #leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
@@ -74,7 +91,19 @@ plt.figure(2,fsize)
 def plotter(x, y, isoExStle, lbl):
     plt.semilogx(x, y, **isoExStle, label=lbl)
 
+# 400 K
+plt.subplot(2,1,1)
+init, step, final = [0,10,-1]
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
+plt.xlim((1, xulim))
+plt.ylabel(ylbl)
+plt.text(10, 122.5, '(i) 400 K', font)
+plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+
 # 500 K
+plt.subplot(2,1,2)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
@@ -82,7 +111,7 @@ plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_lab
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-#plt.text(2, 5.3, '(iii) 500 K', font)
+plt.text(10, 122.5, '(ii) 500 K', font)
 leg = plt.legend()
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels

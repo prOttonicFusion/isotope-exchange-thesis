@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from plotStyle import *
 
-path = '/home/otto/Drive2/isoEx_NVT/GB_isoEx_results/'
+path = '/home/otto/Drive2/isoEx_NVT/GB_3000W_isoEx_results/'
 
 # ============================== READ DATA ==============================
 # Function for reading columnsToRead=[i,j,...] columns from file 'fname'
@@ -19,8 +19,8 @@ def readData(fname, columnsToRead):
     return np.array(data)
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_500K = readData(path+'GB_9600W_150H_369T_500K_1000ns/HinGB.out', [0,1,2])
-tT_diff_500K = readData(path+'GB_9600W_0H_369T_500K_1000ns/HinGB.out', [0,1])
+tTH_isoEx_500K = readData(path+'yGB_3000W_40H_193T_500K_constH_200ns/HinGB.out', [0,1,2])
+tT_diff_500K = readData(path+'yGB_3000W_0H_193T_500K_400ns/HinGB.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
