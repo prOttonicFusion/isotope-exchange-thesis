@@ -19,7 +19,7 @@ def readData(fname, columnsToRead):
     return np.array(data)
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_400K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
+tTH_isoEx_400K = readData(path+'disloc_isoEx_400K_250ns/HinDisl.out', [0,1,2])
 tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_250ns/HinDisl.out', [0,1])
 tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
 tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_250ns/HinDisl.out', [0,1])
