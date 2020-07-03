@@ -115,4 +115,20 @@ D ~\propto~ \exp\left(-\frac{1}{k_{\text{B}}T}\right)
 \end{align}
 temperatures of above 700 K are still needed to remove the trapped hydrogen within reasonable timescales \cite{heinola2017long}.
 
-% TODO: Description of the proposed mechanism of isotope exchange
+% [Description of the proposed mechanism of isotope exchange]
+The binding energy of the $N$th H atom to a vacancy is calculated as
+\begin{align}
+E_{\text{bind}}(N) ~=~ E(N-1) + E_\text{sol} - [ E(N) + E_\text{bulk} ]
+\end{align}
+where $E_\text{bulk}$ is the total energy of the perfect crystalline system and $E(N)$ is that of a system with a vacancy with $N$ H atoms. 
+% TODO: add E_bind(N) plot? E.g. Heinola et al. 2010 DFT data
+$E_\text{sol}$, on the other hand, is the energy of a W lattice without a vacancy, but with a solute H atom at a TIS site.
+For most typical defects, $E_{\text{bind}}$ decreases with $N$, i.e. each added atom is more loosely bound than the previous.
+When a hydrogen atom gets detrapped and diffuses far enough from its original position in a defect, it is unlikely to return; either it gets trapped in another nearby defect or eventually exits through an open surface.
+As the defect empties this way, it grows increasingly difficult for the remaining hydrogen atoms to overcome the barrier set by $E_{\text{bind}}$. 
+
+Annealing performed under a H$_2$ atmosphere or alternatively under a bombardment of H plasma has been experimentally shown to reduce the time needed for the annealing and also to give promising results at lower temperatures \cite{alimov2011hydrogen, roth2013hydrogen, barton2014deuterium, ahlgren2019hydrogen}.
+The mechanism supposedly works by keeping the number of hydrogen atoms bound to a defect constant.  
+As a tritium atom now leaves the defect, its place is soon taken by a close-by protium atom, resulting in the low-$E_{\text{bind}}$ states being occupied at any given moment.
+Since hydrogen atoms are assumed to move around somewhat in the defect, there is constantly a non-zero probability of finding a tritium atom in a low-$E_{\text{bind}}$ state.
+
