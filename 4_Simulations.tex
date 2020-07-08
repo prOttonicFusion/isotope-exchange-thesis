@@ -11,6 +11,16 @@ The W-W interaction part of this potential is the same as 'EAM2' developed by Ma
 It is well-known for providing elastic constants as well as point defect, dislocation and grain boundary properties in good agreement with Density Functional Theory (DFT) calculations and experiments \cite{bonny2014many}. 
 The W-H-He potential referred hereafter to as just 'EAM1', has been shown to relatively accurately recreate the interactions of H with both point defects and dislocations in W \cite{bonny2014binding, grigorev2015interaction}. 
 
+Due to the long in-simulation times, particular attention had to be paid to optimisation of all aspects of the simulations.
+The overall computational load could be reduced by scaling down the atomic systems to the bare minima without significantly affecting the accuracy of our results.
+For instance, by reducing the side length of a cubic cell of tungsten from 12 unit cells to 10, we have exactly 662 fewer atoms. 
+Assuming a linear, $O(N)$, time complexity, this amounts to a 25 \% decrease in wall-time.
+On a two-week-long simulation, run in parallel on six CPUs, this small change would mean saving over 500 CPU hours. 
+
+For systems consisting of thousands of atoms, running MD in parallel is imperative, but comes with additional considerations.  
+Utilising too few CPUs results in obvious performance issues, while using too many is wasteful and can cause slow-downs due to increased inter-processor communication.
+A poorly chosen number of CPUs can additionally result in a suboptimal division of the simulation cell among the processors. 
+By using short test runs, we could determine the optimal number of CPUs for each configuration.
 
 % ---------------------------------------------------------------------------------------------------
 \section{Simulation Setups}
@@ -22,6 +32,7 @@ The energy minimization method of choice was a Polak-Ribi\`{e}re conjugate gradi
 Following the initial relaxation, a large amount of T atoms were deposited at random positions around the cell and allowed to diffuse around during successive MD runs, until the defect had been fully saturated with hydrogen.
 After this, the excess T was removed before adding H to random interstitial sites around the cell. 
 Isotope exchange was then simulated by running MD for a total simulation time of 100...1450 ns. 
+
 Periodic boundaries were applied in all directions, and the pressure and temperature were controlled using a Nos\'{e}-Hoover thermostat and barostat, emulating an isothermal-isobaric ensemble. 
 In a real-world situation, a T atom leaving a defect and diffusing far away would very unlikely return to its starting point, as opposed to getting caught in another defect or leaving the material through a surface. 
 Due to the periodic boundaries, however, the T atoms cannot leave the space defined by the cell, as a border-crossing atom merely returns from the opposite side. 
@@ -29,6 +40,8 @@ The simulations were therefore performed in intervals of 5 ps (5000 time steps),
 In this scope, 'far away' was defined as a distance $d_{\rm{rmv}} $ from the initial position of the T atom. 
 Depending on the geometry of the defect, this parameter had a value of 14...40 \AA, i.e. ca 4...13 unit cells.
 
+As we intend to verify that isotope exchange indeed results in more effective tritium removal than conventional methods, setups for comparison simulations were constructed by omitting the added H and only simulating the spontaneous diffusion of T away from the defect. 
+These monoisotopic systems should approximately emulate vacuum annealing conditions.  
 
 
 % --------------- IsoEx MD ------------------------------------------------------------------------------------
