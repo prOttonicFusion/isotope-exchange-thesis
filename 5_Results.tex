@@ -5,13 +5,13 @@
 For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
 Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
 
-In practice, this was performed by parsing the dump files with a simple Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the number of H and T in the defect as a function of time.
+In practice, this was performed by parsing the dump files with a simple Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as a functions of time.
 
 % ----------------------------------------------------------------------------------
 \section{Vacancies}
 % ----------------------------------------------------------------------------------
 In fig. (\ref{Fig:1Vac_results}) we can see the number of T and H atoms bound to the monovacany as a function of time, for three different temperatures. 
-For comparison, simulations without any added H atoms were run with tritium being removed purely due to diffusion. 
+For comparison, the results of the monoisotopic, 'vacuum annealing', simulations are also shown. 
 
 \begin{figure}[ht]
 \begin{subfigure}{.5\textwidth}
@@ -50,11 +50,7 @@ For comparison, simulations without any added H atoms were run with tritium bein
 
 From the figures \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results} it is evident that the addition of T significantly increases the rate of T removal from both mono- and divacancies. 
 
-Because of the H atoms being lighter, and thus being slightly more mobile than T, one would assume H to leave the monovacancy at a faster rate than T. 
-This is exactly what can be seen when running a simulation with the hydrogen isotopes inverted i.e. having six H atoms initially bound to the vacancy and surrounded by 20 uniformly distributed T atoms. 
-In this inverted setting, (Fig. \ref{Fig:1Vac_results}; subfigs. a.iv and b.iv) the complete isotope exchange at the vacancy can be seen to occur in just over 200 ns, compared to the 500 ns required to replace T with H in our earlier simulation.  
-
-Although to the potential gives smaller binding energy values for the hydrogen-vacancy interaction than DFT (Fig. \ref{Fig:Ebind1H_DFT}), the comparison simulations with only tritium and no added H (Fig. \ref{Fig:1Vac_results}) clearly show that qualitative results are still valid.
+Although to the potential gives smaller binding energy values for the hydrogen-vacancy interaction than DFT (Fig. \ref{Fig:Ebind1H_DFT}), the monoisotopic comparison simulations (Fig. \ref{Fig:1Vac_results}) clearly show that qualitative results are indeed valid.
 
 \begin{figure}[!ht]
 \center
