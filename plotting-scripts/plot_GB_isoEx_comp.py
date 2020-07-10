@@ -1,22 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from plotStyle import *
-
-path = '/home/otto/Drive2/isoEx_NVT/GB_3000W_isoEx_results/'
+from dataUtils import dataRootPath as path
+from dataUtils import readData
 
 # ============================== READ DATA ==============================
-# Function for reading columnsToRead=[i,j,...] columns from file 'fname'
-def readData(fname, columnsToRead):
-    data = []
-    print('Reading: {}'.format(fname))
-    with open(fname) as f:
-        f.readline() # skip header
-        line = f.readline()
-        while line:
-            spltd = line.split()
-            data.append([float(spltd[i]) for i in columnsToRead])
-            line = f.readline()
-    return np.array(data)
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
 tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_200ns/HinGB.out', [0,1,2])
