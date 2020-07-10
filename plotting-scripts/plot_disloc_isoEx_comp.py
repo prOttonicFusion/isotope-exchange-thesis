@@ -101,7 +101,7 @@ plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_lab
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(10, 122.5, '(ii) 500 K', font)
+plt.text(1.3, 98, '(ii) 500 K', font)
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # Show & save figure
