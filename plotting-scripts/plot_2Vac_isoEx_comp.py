@@ -54,13 +54,11 @@ plt.xlim((1, 1000))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(100, 10.1, '2-Vac; 500K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 
-# Show & save figure                                                                                        
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/2Vac_isoEx_HT.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/2Vac_isoEx_HT.png')
 plt.show()  
 
 # ------------------------ H&T isoEx vs diff log  --------------------------
@@ -78,13 +76,13 @@ plt.xlim((1, 1000))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 10.1, '2-Vac; 500K', font)
-leg = plt.legend()
+leg = plt.legend(loc='center left', bbox_to_anchor=(0.03, 0.42))
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 
-# Show & save figure                                                                                        
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/2Vac_isoEx_HT_log.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/2Vac_isoEx_HT_log.png')
 plt.show()  
 
 print('Done!')

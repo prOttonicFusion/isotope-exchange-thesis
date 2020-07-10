@@ -68,8 +68,6 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(400, 5.3, '(i) 400 K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 450 K
@@ -82,8 +80,6 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(400, 5.3, '(ii) 450 K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -96,8 +92,6 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(400, 5.3, '(iii) 500 K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K; inverse isotopes
@@ -109,12 +103,10 @@ plt.text(400, 5.3, '(iii) 500 K', font)
 #plt.xlabel(xlbl)
 #plt.ylabel(ylbl)
 #plt.text(700, 5.3, '(iv) 500 K; inverted', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
-# Show & save figure                                                                                       
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/1Vac_isoEx_HT.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/1Vac_isoEx_HT.png')
 plt.show()   
 
 
@@ -135,7 +127,7 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(i) 400 K', font)
-leg = plt.legend()
+leg = plt.legend(loc='center left', bbox_to_anchor=(0.03, 0.5))
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
@@ -149,8 +141,6 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(ii) 450 K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -163,8 +153,6 @@ plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(iii) 500 K', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K; inverse isotopes
@@ -176,12 +164,10 @@ plt.text(2, 5.3, '(iii) 500 K', font)
 #plt.xlabel(xlbl)
 #plt.ylabel(ylbl)
 #plt.text(2, 5.3, '(iv) 500 K; inverted', font)
-#leg = plt.legend()
-#leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
-# Show & save figure                                                                                       
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/1Vac_isoEx_HT_log.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/1Vac_isoEx_HT_log.png')
 plt.show() 
 
 print('Done!')

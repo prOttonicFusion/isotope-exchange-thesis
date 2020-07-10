@@ -19,8 +19,8 @@ def readData(fname, columnsToRead):
     return np.array(data)
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_400K = readData(path+'disloc_isoEx_400K_250ns/HinDisl.out', [0,1,2])
-tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_250ns/HinDisl.out', [0,1])
+tTH_isoEx_400K = readData(path+'disloc_isoEx_400K_300ns/HinDisl.out', [0,1,2])
+tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_300ns/HinDisl.out', [0,1])
 tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
 tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_250ns/HinDisl.out', [0,1])
 
@@ -39,7 +39,7 @@ print('Drawing figures ...')
 fsize = [6.0, 7.0]
 
 # Upper x-axis limit [ns]
-xulim = 250.0
+xulim = 300.0
 
 # axis labels
 ylbl = 'Atoms bound to disl.'
@@ -78,9 +78,9 @@ plt.text(50, 122.5, '(ii) 500 K', font)
 #leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
-# Show & save figure                                                                                       
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/disloc_isoEx_HT.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/disloc_isoEx_HT.png')
 plt.show()   
 
 
@@ -99,7 +99,9 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], 
 plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.ylabel(ylbl)
-plt.text(10, 122.5, '(i) 400 K', font)
+plt.text(1.3, 98, '(i) 400 K', font)
+leg = plt.legend(loc='lower right', bbox_to_anchor=(0.99, 0.03))
+leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -112,13 +114,11 @@ plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(10, 122.5, '(ii) 500 K', font)
-leg = plt.legend()
-leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
-# Show & save figure                                                                                       
-plt.tight_layout()                                                                                   
-plt.savefig('../figures/disloc_isoEx_HT_log.png')                                                                     
+# Show & save figure
+plt.tight_layout()
+plt.savefig('../figures/disloc_isoEx_HT_log.png')
 plt.show() 
 
 print('Done!')
