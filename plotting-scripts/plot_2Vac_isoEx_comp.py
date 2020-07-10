@@ -6,6 +6,8 @@ from dataUtils import readData
 
 # ============================== READ DATA ==============================
 
+path += '2Vac_isoEx_results/'
+
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
 tTH_isoEx = readData(path+'2Vac_2000W_20H_10T_500K_1000ns/HinVac.out', [0,1,2])
 tTH_diff  = readData(path+'2Vac_2000W_0H_10T_500K_1000ns/HinVac.out', [0,1,2])

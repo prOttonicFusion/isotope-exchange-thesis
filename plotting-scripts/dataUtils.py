@@ -1,5 +1,7 @@
+import numpy as np
 
-dataRootPath = '/home/otto/Drive2/isoEx_NVT/1Vac_isoEx_results/'
+
+dataRootPath = '/home/otto/Drive2/isoEx_NVT/'
 
 # Function for reading columnsToRead=[i,j,...] columns from file 'fname'
 def readData(fname, columnsToRead):
