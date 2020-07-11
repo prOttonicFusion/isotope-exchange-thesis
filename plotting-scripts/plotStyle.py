@@ -39,6 +39,7 @@ plt.rcParams['ytick.labelsize'] = fsize
 plt.rcParams['xtick.major.pad']= 4*pltm      # Space between tick label & axis
 plt.rcParams['ytick.major.pad']= 4*pltm
 plt.rcParams['font.family'] = 'DeJaVu Serif'   # E.g. Bitstream Vera Sans/serif
+plt.rcParams["mathtext.fontset"] = "dejavuserif"
 plt.rcParams['font.weight'] = 'normal'        # Ticks & legend bold/normal
 plt.rcParams['axes.labelweight'] = 'normal' # axis labels bold/normal
 
