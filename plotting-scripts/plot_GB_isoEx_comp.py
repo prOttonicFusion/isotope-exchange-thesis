@@ -9,10 +9,10 @@ from dataUtils import readData
 path += 'GB_3000W_isoEx_results/'
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_200ns/HinGB.out', [0,1,2])
+tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_400ns/HinGB.out', [0,1,2])
 tT_diff_400K = readData(path+'yGB_3000W_0H_73T_400K_250ns/HinGB.out', [0,1])
-tTH_isoEx_500K = readData(path+'yGB_3000W_100H_73T_500K_300ns/HinGB.out', [0,1,2])
-tT_diff_500K = readData(path+'yGB_3000W_0H_73T_500K_300ns/HinGB.out', [0,1])
+tTH_isoEx_500K = readData(path+'yGB_3000W_100H_73T_500K_400ns/HinGB.out', [0,1,2])
+tT_diff_500K = readData(path+'yGB_3000W_0H_73T_500K_400ns/HinGB.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
