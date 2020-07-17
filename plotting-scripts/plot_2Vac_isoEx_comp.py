@@ -9,7 +9,7 @@ from dataUtils import readData
 path += '2Vac_isoEx_results/'
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx = readData(path+'2Vac_2000W_20H_10T_500K_1000ns/HinVac.out', [0,1,2])
+tTH_isoEx = readData(path+'2Vac_2000W_20H_10T_500K_500ns/HinVac.out', [0,1,2])
 tTH_diff  = readData(path+'2Vac_2000W_0H_10T_500K_1000ns/HinVac.out', [0,1,2])
 
 # Convert timesteps --> time in ns
@@ -40,10 +40,11 @@ init, final, step = [0,-1,70]
 plotter(tTH_isoEx[init:final:step, 0], tTH_isoEx[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx[init:final:step, 0], tTH_isoEx[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_diff[:, 0], tTH_diff[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
-plt.xlim((1, 1000))
+plt.xlim((1, 500))
+plt.ylim((1,12))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(100, 10.1, '2-Vac; 500K', font)
+plt.text(50, 10.8, '2-Vac; 500K', font)
 
 
 # Show & save figure
@@ -62,10 +63,11 @@ init, final, step = [0,-1,70]
 plotter(tTH_isoEx[init:final:step, 0], tTH_isoEx[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx[init:final:step, 0], tTH_isoEx[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_diff[:, 0], tTH_diff[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
-plt.xlim((1, 1000))
+plt.xlim((1, 500))
+plt.ylim((1,12))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(2, 10.1, '2-Vac; 500K', font)
+plt.text(2, 10.8, '2-Vac; 500K', font)
 leg = plt.legend(loc='center left', bbox_to_anchor=(0.03, 0.42))
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
