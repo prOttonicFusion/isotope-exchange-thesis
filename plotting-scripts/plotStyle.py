@@ -49,7 +49,7 @@ font = {'family': 'DeJaVu Serif', 'color':  'black', 'weight': 'bold','size': fs
 # Plot marker & line styles
 #H_iso_color, T_iso_color, T_diff_color = ['#40bad5','#035aa6','#120136']  # All-blue 
 H_iso_color, T_iso_color, T_diff_color = ['#ffa41b','#0de2ea','#025297']  # Blue-orange
-H_iso_color, T_iso_color, T_diff_color = ['#ff0000','#0de2ea','#025297']  # Blue-red
+H_iso_color, T_iso_color, T_diff_color = ['#ff0000','#63d6ff','#025297']  # Blue-red
 #H_iso_color, T_iso_color, T_diff_color = ['#003f5c','#bb053c','#ffa41b']  # Germany
 #H_iso_color, T_iso_color, T_diff_color = ['#ff7f0e','#ff7f0e','#2ca02c']  # Matplotlib default-ish
 

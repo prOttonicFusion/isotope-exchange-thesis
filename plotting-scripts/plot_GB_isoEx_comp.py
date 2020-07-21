@@ -9,10 +9,10 @@ from dataUtils import readData
 path += 'GB_3000W_isoEx_results/'
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_400ns/HinGB.out', [0,1,2])
-tT_diff_400K = readData(path+'yGB_3000W_0H_73T_400K_250ns/HinGB.out', [0,1])
-tTH_isoEx_500K = readData(path+'yGB_3000W_100H_73T_500K_400ns/HinGB.out', [0,1,2])
-tT_diff_500K = readData(path+'yGB_3000W_0H_73T_500K_400ns/HinGB.out', [0,1])
+tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_500ns/HinGB.out', [0,1,2])
+tT_diff_400K = readData(path+'yGB_3000W_0H_73T_400K_550ns/HinGB.out', [0,1])
+tTH_isoEx_500K = readData(path+'yGB_3000W_100H_73T_500K_500ns/HinGB.out', [0,1,2])
+tT_diff_500K = readData(path+'yGB_3000W_0H_73T_500K_500ns/HinGB.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
@@ -29,11 +29,13 @@ print('Drawing figures ...')
 fsize = [6.0, 7.0]
 
 # Upper x-axis limit
-xulim = 300.0
+xulim = 500.0
 
 # axis labels
 ylbl = 'Atoms bound to GB'
 xlbl = 'Time [ns]'
+
+init, step, final = [0,50,-1]
 
 # ------------------------ H&T isoEx vs diffusion --------------------------
 plt.figure(1,fsize)
@@ -44,10 +46,9 @@ def plotter(x, y, isoExStle, lbl):
 
 # 400 K
 plt.subplot(2,1,1)
-init, step, final = [0,100,-1]
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
-plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -56,10 +57,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
     
 # 500 K
 plt.subplot(2,1,2)
-init, step, final = [0,100,-1]
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -83,10 +83,9 @@ def plotter(x, y, isoExStle, lbl):
 
 # 400 K
 plt.subplot(2,1,1)
-init, step, final = [0,100,-1]
+plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
-plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
@@ -95,10 +94,9 @@ plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
 plt.subplot(2,1,2)
-init, step, final = [0,100,-1]
+plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
-plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
