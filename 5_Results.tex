@@ -5,8 +5,9 @@
 % ----------------------------------------------------------------------------------
 \section{Vacancies}
 % ----------------------------------------------------------------------------------
-In Fig. \ref{Fig:1Vac_results} we can see the number of T and H atoms bound to the monovacany as a function of time, for three different temperatures. 
+In Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results} we can see the number of T and H atoms bound to the mono- and divacancies as a function of time, for different temperatures. 
 For comparison, the results of the monoisotopic, 'vacuum annealing', simulations are also shown. 
+It is evident that the addition of T significantly increases the rate of T removal from both mono- and divacancies. 
 
 \begin{figure}[ht]
 \begin{subfigure}{.5\textwidth}
@@ -21,7 +22,7 @@ For comparison, the results of the monoisotopic, 'vacuum annealing', simulations
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-\caption{Number of H and T atoms in the monovacany for isotope exchange and diffusion simulations}
+\caption{Number of H and T atoms in the monovacancy for isotope exchange and diffusion simulations}
  \label{Fig:1Vac_results} 
 \end{figure}
 
@@ -43,25 +44,10 @@ For comparison, the results of the monoisotopic, 'vacuum annealing', simulations
    \label{Fig:2Vac_results} 
 \end{figure}
 
-From Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results} it is evident that the addition of T significantly increases the rate of T removal from both mono- and divacancies. 
-
-Although to the potential gives smaller binding energy values for the hydrogen-vacancy interaction than DFT (Fig. \ref{Fig:Ebind1H_DFT}), the monoisotopic comparison simulations (Fig. \ref{Fig:1Vac_results}) clearly show that qualitative results are indeed valid.
-
-%\begin{figure}[!ht]
-%\center
-%\includegraphics[width=0.5\linewidth]{Ebind.png}
-%\caption{Comparision of the H-W binding energy in EAM1 by Bonny \textit{et. al} and DFT results by Heinola \textit{et. al. }\cite{heinolaTungstenDFT}}
-%\label{Fig:Ebind1H_DFT}
-%\end{figure}
+Compared to DFT \cite{heinolaTungstenDFT}, the EAM potential used in this work gives slightly smaller binding energies for the hydrogen-vacancy interaction (Fig. \ref{Fig:Ebind1H_DFT}). 
+Absolute tritium removal rates might thus not be directly comparable to experiments, whereas the relative differences between isotope exchange and vacuum annealing simulations are still valid.
 
 Plotting the potential energy of the individual T atoms as a function of time as in Fig. \ref{Fig:Epot}, we can see sharp fluctuations as the atoms move around inside the defect, transitioning in and out of binding energy states.
-
-%\begin{figure}[!ht]
-%\center
-%\includegraphics[width=0.52\linewidth]{epot.png}
-%\caption{The potential energies of all individual T atoms in the 500 K simulation.}
-%\label{Fig:Epot}
-%\end{figure}
 
 \begin{figure}[ht]
 \begin{subfigure}{.48\textwidth}
@@ -74,7 +60,7 @@ Plotting the potential energy of the individual T atoms as a function of time as
 \begin{subfigure}{.48\textwidth}
 	\center
 	\includegraphics[width=1.1\linewidth]{epot.png}
-	\caption{The potential energies of all individual T atoms in the 500 K simulation.}
+	\caption{The potential energies of all individual T atoms in the 500 K simulation.\vspace*{6mm}}
 	\label{Fig:Epot}
   %\label{fig:sub-second}
 \end{subfigure}
