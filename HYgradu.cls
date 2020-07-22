@@ -266,7 +266,7 @@
 
 \@level
 
-\@programme
+%\@programme
 
 \@subject
 
