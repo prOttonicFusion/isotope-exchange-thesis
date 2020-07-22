@@ -9,7 +9,7 @@ Molecular dynamics (MD) as a simulation method originates from the 1950s and is,
 On a fundamental level, MD consists of solving many-body problems iteratively to determine the forces acting on individual particles. 
 These calculations, too complex to have any analytical solutions, are performed using numerical methods and allow us to relatively accurately simulate the dynamic evolution of (semi-)classical systems of particles. 
 
-A typical MD algorithm follows the pattern described in fig. \ref{MD-schema}. 
+A typical MD algorithm follows the pattern described in Fig. \ref{MD-schema}. 
 The simulation is initiated by giving each atom, $i=1,...,N$, an initial position $\mathbf{r}_i^{(0)}$ and random velocity $\mathbf{v}_i^{(0)}$, consistent with the desired net temperature of the system. 
 The positions and velocities, $\mathbf{r}_i$ and $\mathbf{v}_i$, are then updated by solving Newton's equations of motion
 \begin{align}
@@ -31,7 +31,7 @@ The use of a force cutoff theoretically reduces the scaling of the algorithm dow
 Despite the use of a force cutoff, most real-world materials are still far too large to be simulated accurately.
 For instance, a typical metal has a number density of around $5\cdot 10^{22}$ atoms/cm$^3$, meaning that simulating even just a $100\times 100 \times 100$ nm$^3$ block of metal, generally considered to be the arbitrary lower limit of bulk materials, would require us to keep track of $5\cdot 10^7$ atoms.
 A standard way of 'cheating' is through the use of \textit{periodic boundary conditions} (PBCs). 
-PBCs imply that particles exiting the region of space confined by the simulation cell borders re-appear on the opposite side, as visualized in fig. (\ref{Fig:pbcs}). 
+PBCs imply that particles exiting the region of space confined by the simulation cell borders re-appear on the opposite side, as visualized in Fig. (\ref{Fig:pbcs}). 
 Since also interatomic forces are allowed to interact over cell borders, we effectively have the cell surrounded by infinitely many copies of itself.
 
 \begin{figure}[!ht]
