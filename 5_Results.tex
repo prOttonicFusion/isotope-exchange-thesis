@@ -2,11 +2,6 @@
 \chapter{Results}
 % ===================================================================================================
 
-For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
-Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
-
-In practice, this was performed by parsing the dump files with a simple Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as a functions of time.
-
 % ----------------------------------------------------------------------------------
 \section{Vacancies}
 % ----------------------------------------------------------------------------------
