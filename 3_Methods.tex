@@ -146,9 +146,21 @@ V_{ij}(r_{ij}) =bV_{ijk}V_{\rm attractive}(r_{ij}) V_ {\rm repulsive}
 Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type. \cite{tersoff1988new, brenner1990empirical, finnis1984simple} Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into the pair-terms.
 
 \section{Parallel Algorithms}
-As is commonly known, the volume of a cube is related to its side length as $V=a^3$. 
-Applying this to atomic systems, it is evident that if we double the side length of a cubical simulation cell, the number of atoms increases by a factor of eight. 
-Correspondingly, the computational load increases by a factor of between 8 and 64, depending on the use of neighbour lists.
+Doubling the side length of a cubical atomic system increases the number of atoms by a factor of eight. 
+Correspondingly, the number of necessary force calculations increases by a factor of  8 to 64, depending on the use of neighbour lists.
+Since we at any given time only store a minimal amount of vector data per atom, MD simulations are generally not very memory intensive.
+Computationally, however, they are indeed expensive due to the large number of force evaluations performed every time step.
+
+Interestingly, the nature of MD simulations makes them inherently parallel, allowing the forces for all atoms to be calculated simultaneously. 
+This fact can be exploited by dividing the computational load across multiple processing units. 
+Parallellisation on $P$ processors can be performed using three principal algorithms; \textit{atom-}, \textit{spatial-} and \textit{force-decompositon}. 
+\cite{fincham1987parallel}
+
+The atom-decompositon algorithm includes appointing $N/P$ atoms to each processor and requires \textit{all-to-all} communication of forces between processors and therefore it scales as $O(N)$, independently of $P$. 
+The force-decomposition algorithm, on the other hand, divides the cell into three-dimensional boxes, with atoms being re-appointed to the corresponding processor each time they enter a new box. 
+This method limits the communication required to only neighbouring processors, giving a theoretical scaling of $O(N/P)$ for largely parallel simulations.
+The spatial-decomposition algorithm, finally, involves appointing force calculation loops to separate processors.
+This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, lagging behind the spatial-decomposition algorithm in performance. \cite{fincham1987parallel,lammpsMD}
 
 % ---------------------------------------------------------------------------------------------------
 % \section{Analysis of the Results}
