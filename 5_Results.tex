@@ -8,6 +8,7 @@
 In Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results} we can see the number of T and H atoms bound to the mono- and divacancies as a function of time, for different temperatures. 
 For comparison, the results of the monoisotopic, 'vacuum annealing', simulations are also shown. 
 While the difference in the T-removal rate is more prominent at lower temperatures, it is noticeable also at 500 K, where removal through pure diffusion starts to play a significant role.
+Despite us aiming mainly for qualitative results, a simple calculation reveals the T-removal rate to be around 50 times higher when employing isotope exchange compared to monoisotopic simulations at 500 K. 
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
@@ -22,7 +23,7 @@ While the difference in the T-removal rate is more prominent at lower temperatur
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-\caption{Number of H and T atoms in the monovacancy for isotope exchange and diffusion simulations}
+\caption{Number of H and T atoms in the monovacancy for isotope exchange and monoisotopic diffusion simulations}
  \label{Fig:1Vac_results} 
 \end{figure}
 
@@ -40,7 +41,7 @@ While the difference in the T-removal rate is more prominent at lower temperatur
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms in the divacancy for isotope exchange and diffusion simulations}
+   \caption{Number of H and T atoms in the divacancy for isotope exchange and monoisotopic diffusion simulations}
    \label{Fig:2Vac_results} 
 \end{figure}
 
@@ -48,7 +49,7 @@ Compared to DFT \cite{heinolaTungstenDFT}, the EAM potential used in this work g
 Absolute tritium removal rates might thus not be directly comparable to experiments, whereas the relative differences between isotope exchange and vacuum annealing simulations are still valid.
 
 Plotting the potential energy of the individual T atoms as a function of time as in Fig. \ref{Fig:Epot}, we can see sharp fluctuations as the atoms move around inside the defect, transitioning in and out of binding energy states.
-This seemingly irrelevant fact is crucial for the isotope exchange mechanism to function and shows on an atomic level what has been hypothesised based on macroscopic observations.
+This seemingly irrelevant fact shows on an atomic level what has been hypothesised based on macroscopic observations to be the basis of the isotope exchange mechanism.
 
 \begin{figure}[!ht]
 \begin{subfigure}{.48\textwidth}
@@ -74,6 +75,8 @@ This seemingly irrelevant fact is crucial for the isotope exchange mechanism to 
 The dislocation results are shown in Fig. \ref{Fig:disloc_results} and indicate an enhanced T-removal rate when utilising isotope exchange at 500 K. 
 At 400 K, on the other hand, there is no significant difference between the two methods.
 
+Due to the extremely long simulation that would have been required for complete T-removal using the monoisotopic method even at 500 K, we can only state that removal using isotope exchange appears to be several orders of magnitude faster.
+
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
@@ -88,7 +91,7 @@ At 400 K, on the other hand, there is no significant difference between the two 
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms bound to the dislocation for isotope exchange and diffusion simulations}
+   \caption{Number of H and T atoms bound to the dislocation for isotope exchange and monoisotopic diffusion simulations}
    \label{Fig:disloc_results} 
 \end{figure}
 
@@ -98,7 +101,9 @@ At 400 K, on the other hand, there is no significant difference between the two 
 \section{Grain boundaries}
 % ----------------------------------------------------------------------------------
 The grain boundary results are shown in Fig. \ref{Fig:GB_results}. 
-Here, as was the case with the dislocation, an improved removal rate can only be observed at 500 K.
+Here, as was the case with the dislocation, an improved T-removal rate can only be observed at 500 K.
+Similarly, the exact difference in removal rate was difficult to determine without excessive use of computing resources, but can be clearly seen from Fig. \ref{Fig:GB_results} to be orders of magnitude higher for the isotope exchange simulations.
+
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
@@ -113,7 +118,7 @@ Here, as was the case with the dislocation, an improved removal rate can only be
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms bound to the grain boundary for isotope exchange and diffusion simulations}
+   \caption{Number of H and T atoms bound to the grain boundary for isotope exchange and monoisotopic diffusion simulations}
    \label{Fig:GB_results} 
 \end{figure}
 
