@@ -63,7 +63,7 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], 
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(105, 70, '(ii) 500 K', font)
+plt.text(105, 75, '(ii) 500 K', font)
 #leg = plt.legend()
 #leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
