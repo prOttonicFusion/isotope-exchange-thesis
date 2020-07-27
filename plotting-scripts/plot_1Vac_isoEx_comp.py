@@ -32,7 +32,7 @@ tT_diff_500K[:,0] *= cf
 print('Drawing figures ...')
 
 # Figure dimensions [x, y]
-fsize = [6.0, 8]
+fsize = [6.0, 8.0]
 
 # Upper x-axis limit [ns]
 xulim = 3000.0
@@ -57,7 +57,7 @@ plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_lab
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(400, 5.3, '(i) 400 K', font)
+plt.text(1500, 5.3, '(i) 400 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 450 K
@@ -69,7 +69,7 @@ plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_lab
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(400, 5.3, '(ii) 450 K', font)
+plt.text(1500, 5.3, '(ii) 450 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -79,9 +79,9 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
-#plt.xlabel(xlbl)
+plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(400, 5.3, '(iii) 500 K', font)
+plt.text(1500, 5.3, '(iii) 500 K', font)
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K; inverse isotopes
@@ -140,7 +140,7 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
-#plt.xlabel(xlbl)
+plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(iii) 500 K', font)
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels

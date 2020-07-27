@@ -4,7 +4,7 @@ import sys
 print('Loading the plot style from {}'.format(__file__))
 
 # ------------------------------ Plot-style ------------------------------
-fsize = 13  # Font size
+fsize = 15  # Font size
 pltm = 1.3  # Plot object size multiplier
 
 plt.rcParams['figure.dpi'] = 150         # figure resolution in dots/inch
@@ -44,7 +44,7 @@ plt.rcParams['font.weight'] = 'normal'        # Ticks & legend bold/normal
 plt.rcParams['axes.labelweight'] = 'normal' # axis labels bold/normal
 
 # Font for fig. titles
-font = {'family': 'DeJaVu Serif', 'color':  'black', 'weight': 'bold','size': fsize+1}
+font = {'family': 'DeJaVu Serif', 'color':  'black', 'weight': 'bold','size': fsize-1}
 
 # Plot marker & line styles
 #H_iso_color, T_iso_color, T_diff_color = ['#40bad5','#035aa6','#120136']  # All-blue 

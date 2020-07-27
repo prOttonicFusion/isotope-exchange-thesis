@@ -17,9 +17,9 @@ def readData(fname, columnsToRead):
     return np.array(data)
 
 # Read data; format: NH, Ebind
-DFT1V = readData('Ebind_DFT_1V.dat', [0,1])
-MD1V  = readData('Ebind_MD_1V.dat', [0,1])
-MD2V  = readData('Ebind_MD_2V.dat', [0,1])
+DFT1V = readData('../Ebind-data/Ebind_DFT_1V.dat', [0,1])
+MD1V  = readData('../Ebind-data/Ebind_MD_1V.dat', [0,1])
+MD2V  = readData('../Ebind-data/Ebind_MD_2V.dat', [0,1])
 
 # ============================== PLOT STUFF =============================
 print('Drawing figures ...')
