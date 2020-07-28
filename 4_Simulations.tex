@@ -101,9 +101,9 @@ For the vacancy simulations, a monovacancy was created by removing the middlemos
 In contrast to the larger defects, where the defect was saturated using random diffusion, the small size of the point defect enabled us to manually place T at their natural lowest energy positions.
 These positions coincide with the octahedral interstitial sites, forming a square bipyramid around the vacancy \cite{heinolaTungstenDFT}.
 A total of 19 H atoms were then deposited to randomly chosen tetragonal interstitial sites around the simulation W lattice, as seen in Fig. \ref{Fig:monovac_system}, bringing the (H+T)/W ratio to 0.0125. 
-The T/H ratio, on the other hand, was 0.32.
 
 A divacancy system was constructed in a similar fashion by removing two neighbouring W atoms and adding a total of 10 T atoms to the defect.
+The (H+T)/W ratio in these simulations was 0.0150.
 
 \begin{figure}[!ht]
 \center
@@ -128,7 +128,8 @@ In order to facilitate the formation of a natural dislocation and to enable the 
 \label{Fig:disloc_construction}
 \end{figure}
 
-In practice, the simulation cell was generated using Atomsk \cite{hirel2015atomsk}, an open-source command-line tool for creating and manipulating data files for atomistic simulations. 
+In practice, the simulation cell was generated using Atomsk \cite{hirel2015atomsk}, an open-source command-line tool for creating and manipulating data files for atomistic simulations.
+With the bulk tungsten cell consisting of 17 424 atoms, the dislocation containing 132 T atoms after saturation and 150 H atoms having been added to random locations, the (H+T)/W ratio was brought to 0.016. 
 
 \begin{figure}[!ht]
 \center
@@ -152,6 +153,8 @@ In order to minimize the number of atoms needed to simulate the system we can se
 
 The data file describing the simulation cell was created using Atomsk \cite{hirel2015atomsk} to grow out the intersecting lattices of the two grains from predefined starting points. 
 Overlapping W atoms were later manually removed to produce a clean \hkl(310)\hkl[001] grain boundary.
+Due to the size and shape of the simulation cell, it contained 30002 W atoms and 73 T atoms were bound to the grain boundary during saturation.
+After deposition 150 H atoms, the (H+T)/W ratio was 0.0576.
 
 \begin{figure}[!ht]
 \center
@@ -168,4 +171,5 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
 Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
 
-In practice, this was performed by parsing the dump files with a simple Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as a functions of time.
+In practice, this was performed by parsing the dump files with a Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as a functions of time.
+
