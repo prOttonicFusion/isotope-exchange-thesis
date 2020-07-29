@@ -53,6 +53,7 @@ plt.subplot(3,1,1)
 init, final, step = [0,-1,10]
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tTH_isoEx_400K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
@@ -65,6 +66,7 @@ plt.subplot(3,1,2)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tTH_isoEx_400K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
@@ -77,11 +79,14 @@ plt.subplot(3,1,3)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(1500, 5.3, '(iii) 500 K', font)
+leg = plt.legend(loc='lower right', bbox_to_anchor=(0.99, 0.05))
+leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K; inverse isotopes
@@ -112,13 +117,12 @@ plt.subplot(3,1,1)
 init, final, step = [0,-1,10]
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tTH_isoEx_400K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(i) 400 K', font)
-leg = plt.legend(loc='center left', bbox_to_anchor=(0.03, 0.5))
-leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 450 K
@@ -126,6 +130,7 @@ plt.subplot(3,1,2)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step,1]+tTH_isoEx_450K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
@@ -138,6 +143,7 @@ plt.subplot(3,1,3)
 init, step, final = [0,10,-1]
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
