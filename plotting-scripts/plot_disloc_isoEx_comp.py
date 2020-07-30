@@ -11,8 +11,8 @@ path += 'disloc_isoEx_results/'
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
 tTH_isoEx_400K = readData(path+'disloc_isoEx_400K_500ns/HinDisl.out', [0,1,2])
 tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_500ns/HinDisl.out', [0,1])
-tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_250ns/HinDisl.out', [0,1,2])
-tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_250ns/HinDisl.out', [0,1])
+tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_300ns/HinDisl.out', [0,1,2])
+tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_300ns/HinDisl.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
