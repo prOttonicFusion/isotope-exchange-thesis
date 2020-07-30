@@ -3,19 +3,19 @@
 % ===================================================================================================
 
 The molecular dynamics code used in this work was the Large-scale Atomic/Molecular Massively Parallel Simulator (LAMMPS) developed by Sandia National Laboratories \cite{lammpsMD}. 
-LAMMPS is a free and open-source code, utilizing the Message Passing Interface (MPI) for running spatially-decomposited parallel MD simulations.
+LAMMPS is a free and open-source code, which utilises the Message Passing Interface (MPI) for running spatially-decomposited parallel MD simulations.
 Additionally, LAMMPS also provides a scripting language used to set input parameters and run simulations, but which also contains tools for creating and manipulating simple simulation cells.    
 
 The interatomic potential of choice for our simulations was the W-H-He EAM potential developed by Bonny \textit{et al.} and referred to as 'EAM1' in \cite{bonny2014binding}. 
-The W-W interaction part of this potential is the same as 'EAM2' developed by Marinica \textit{et al.} in \cite{marinica2013interatomic}. 
+The W-W interaction part of this potential is the same as in 'EAM2' developed by Marinica \textit{et al.} in \cite{marinica2013interatomic}. 
 It is well-known for providing elastic constants as well as point defect, dislocation and grain boundary properties in good agreement with Density Functional Theory (DFT) calculations and experiments \cite{bonny2014many}. 
 The W-H-He potential referred hereafter to as just 'EAM1', has been shown to relatively accurately recreate the interactions of H with both point defects and dislocations in W \cite{bonny2014binding, grigorev2015interaction}. 
 
 Due to the long in-simulation times, particular attention had to be paid to optimisation of all aspects of the simulations.
 The overall computational load could be reduced by scaling down the atomic systems to the bare minima without significantly affecting the accuracy of our results.
 For instance, by reducing the side length of a cubic cell of tungsten from 12 unit cells to 10, we have exactly 662 fewer atoms. 
-Assuming a linear, $O(N)$, time complexity, this amounts to a 25 \% decrease in wall-time.
-On a two-week-long simulation, run in parallel on six CPUs, this small change would mean saving over 500 CPU hours. 
+Assuming a linear, $O(N)$ time complexity, this amounts to a 25 \% decrease in wall-time.
+On a two-week-long parallel simulation run on six CPUs, this small change would mean saving over 500 CPU hours. 
 
 For systems consisting of thousands of atoms, running MD in parallel is imperative, but comes with additional considerations.  
 Utilising too few CPUs results in obvious performance issues, while using too many is wasteful and can cause slow-downs due to increased inter-processor communication.
@@ -31,9 +31,10 @@ The energy minimization method of choice was a Polak-Ribi\`{e}re conjugate gradi
 
 Following the initial relaxation, a large amount of T atoms were deposited at random positions around the cell and allowed to diffuse around during successive MD runs, until the defect had been fully saturated with hydrogen.
 After this, the excess T was removed before adding H to random interstitial sites around the cell. 
-Isotope exchange was then simulated by running MD for a total simulation time of 100...1450 ns. 
+Isotope exchange was then simulated by running MD until the tritium was completely removed from the defect.
+In practice, this amounted to total simulation times of 100...3000 ns and wall-times of 1...4 months depending on the defect type in question. 
 
-Periodic boundaries were applied in all directions, and the pressure and temperature were controlled using a Nos\'{e}-Hoover thermostat and barostat, emulating an isothermal-isobaric ensemble. 
+Periodic boundaries were applied in all directions, and the pressure and temperature were controlled using Nos\'{e}-Hoover thermostats and barostats, emulating an isothermal-isobaric ensemble. 
 In a real-world situation, a T atom leaving a defect and diffusing far away would very unlikely return to its starting point, as opposed to getting caught in another defect or leaving the material through a surface. 
 Due to the periodic boundaries, however, the T atoms cannot leave the space defined by the cell, as a border-crossing atom merely returns from the opposite side. 
 The simulations were therefore performed in intervals of 5 ps (5000 time steps), and after each interval, any T atoms having moved sufficiently far away were automatically removed from the simulation. 
@@ -98,7 +99,7 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \subsection{Vacancies}
 % ---------------------------------------------------------------------------------------------------
 For the vacancy simulations, a monovacancy was created by removing the middlemost atom of a $10\times 10 \times 10$ unit cell (2000 atom) W lattice.  
-In contrast to the larger defects, where the defect was saturated using random diffusion, the small size of the point defect enabled us to manually place T at their natural lowest energy positions.
+In contrast to the larger systems, where the defect was saturated using random diffusion, the small size of the point defect enabled us to manually place T at their natural lowest energy positions.
 These positions coincide with the octahedral interstitial sites, forming a square bipyramid around the vacancy \cite{heinolaTungstenDFT}.
 A total of 19 H atoms were then deposited to randomly chosen tetragonal interstitial sites around the simulation W lattice, as seen in Fig. \ref{Fig:monovac_system}, bringing the (H+T)/W ratio to 0.0125. 
 
@@ -116,7 +117,7 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 % ---------------------------------------------------------------------------------------------------
 \subsection{Dislocations}
 % ---------------------------------------------------------------------------------------------------
-For the dislocation simulations, a  $109.0 \times 136.8 \times 18.4$ $\AA^3$ simulation cell containing a 1/2\hkl[1 1 1]\hkl{1 0 0} edge dislocation was used. 
+For the dislocation simulations, a  $109.0 \times 136.8 \times 18.4$ $\AA^3$ simulation cell containing an arbitrarily chosen 1/2\hkl[1 1 1]\hkl{1 0 0} edge dislocation was used. 
 The defect was generated by first producing a cuboid supercell, with the $x$, $y$ and $z$ axes oriented along the crystal directions \hkl[1 1 1], \hkl[1 1 -2] and \hkl[-1 1 0], respectively, as shown in Fig. (\ref{Fig:disloc_system}). 
 The cell was then divided into three equally thick slices, parallel to the \hkl{11-2} plane and a dislocation was introduced by inserting a redundant \hkl{1 1 1} atom plane to the middlemost slice, as shown in Fig. \ref{Fig:disloc_construction}. 
 In order to facilitate the formation of a natural dislocation and to enable the use of periodical boundary conditions, the atom positions in the middle slice were finally compressed slightly.
@@ -171,5 +172,5 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
 Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
 
-In practice, this was performed by parsing the dump files with a Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as a functions of time.
+In practice, this was performed by parsing the dump files with a Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as functions of time.
 

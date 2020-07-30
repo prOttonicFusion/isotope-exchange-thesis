@@ -5,12 +5,12 @@
 % ---------------------------------------------------------------------------------------------------
 \section{Molecular Dynamics in General}
 % ---------------------------------------------------------------------------------------------------
-Molecular dynamics (MD) as a simulation method originates from the 1950s and is, therefore, one of the oldest tools used in computational physics and materials research \cite{alder1957phase}.
+Molecular dynamics (MD) as a simulation method originates from the 1950s and is, therefore, one of the oldest tools still in use in computational physics and materials research \cite{alder1957phase}.
 On a fundamental level, MD consists of solving many-body problems iteratively to determine the forces acting on individual particles. 
 These calculations, too complex to have any analytical solutions, are performed using numerical methods and allow us to relatively accurately simulate the dynamic evolution of (semi-)classical systems of particles. 
 
 A typical MD algorithm follows the pattern described in Fig. \ref{MD-schema}. 
-The simulation is initiated by giving each atom, $i=1,...,N$, an initial position $\mathbf{r}_i^{(0)}$ and random velocity $\mathbf{v}_i^{(0)}$, consistent with the desired net temperature of the system. 
+The simulation is initiated by giving each atom, $i=1,...,N$, an initial position $\mathbf{r}_i^{(0)}$ and random velocity $\mathbf{v}_i^{(0)}$, consistent with the desired temperature distribution of the system. 
 The positions and velocities, $\mathbf{r}_i$ and $\mathbf{v}_i$, are then updated by solving Newton's equations of motion
 \begin{align}
 \mathbf{F}_i(\mathbf{r}_i,t) = m_i\frac{d^2\mathbf{r}_i}{dt^2} = m_i\mathbf{a}_i(t) = -\nabla_{r_i}V(\mathbf{r}_i)
@@ -18,7 +18,7 @@ The positions and velocities, $\mathbf{r}_i$ and $\mathbf{v}_i$, are then update
 where $m_i$ is the mass of atom i, positioned at $\mathbf{r}_i$. 
 The forces $\mathbf{F}_i$ are determined from the interatomic potential $V(\mathbf{r}_i)$ and can be used to calculate the acceleration of each particle. 
 The new positions and velocities are then simply evaluated as functions of the acceleration and the simulation time step $\Delta t$. 
-The simulation then proceeds through repeated evaluations of the equations of motion, updating the system in increments of $\Delta t$ time units. 
+The simulation proceeds through repeated evaluations of the equations of motion, updating the system in increments of $\Delta t$ time units. 
 In order to avoid catastrophic errors in the conservation of energy, the time step must be shorter than the inverse vibrational frequency of any process in the system, typically around 1 fs for many materials in equilibrium. \cite{choe2000determination}
 
 % [Neighbour lists & force cutoff]
@@ -30,9 +30,9 @@ The use of a force cutoff theoretically reduces the scaling of the algorithm dow
 % [Periodic boundaries] 
 Despite the use of a force cutoff, most real-world materials are still far too large to be simulated accurately.
 For instance, a typical metal has a number density of around $5\cdot 10^{22}$ atoms/cm$^3$, meaning that simulating even just a $100\times 100 \times 100$ nm$^3$ block of metal, generally considered to be the arbitrary lower limit of bulk materials, would require us to keep track of $5\cdot 10^7$ atoms.
-A standard way of 'cheating' is through the use of \textit{periodic boundary conditions} (PBCs). 
+A standard way of cutting corners is through the use of \textit{periodic boundary conditions} (PBCs). 
 PBCs imply that particles exiting the region of space confined by the simulation cell borders re-appear on the opposite side, as visualized in Fig. (\ref{Fig:pbcs}). 
-Since also interatomic forces are allowed to interact over cell borders, we effectively have the cell surrounded by infinitely many copies of itself.
+Since also interatomic forces are allowed to interact across cell borders, we effectively have a cell surrounded by infinitely many copies of itself.
 
 \begin{figure}[!ht]
 \center
@@ -42,27 +42,27 @@ Since also interatomic forces are allowed to interact over cell borders, we effe
 \end{figure}
 
 With a perfect lattice, a simulation cell with periodic boundary conditions accurately emulates a bulk material. 
-With various defects introduced, we, however, have to make sure that the cell is large enough for the created strain field not to overlap with itself, possibly affecting the results detrimentally.
+With various defects introduced, we, however, have to make sure that the cell is large enough for the created strain field not to overlap with itself, possibly affecting our results detrimentally.
 
 % [Thermostats, barostats]
 Real systems are seldom isolated and instead exchange at least energy with their surroundings in a number of ways. 
 In order to sample a non-isolated thermodynamic ensemble, we need to control the temperature of our simulation manually. 
-Temperature of an atomic system is defines as
+The temperature of an atomic system is defined as
 \begin{align}
 T(t) = \frac{1}{k_{\text{B}}N_f}\sum_{i}\left[ m_iv_{i,x}^2(t) + m_iv_{i,y}^2(t) + m_iv_{i,z}^2(t)\right]
 \end{align}
 where $N_f$ is the number of degrees of freedom and $v_{i}$ is the velocity of atom $i$. 
 It is, therefore, straightforward to see why we can control the temperature by scaling atomic velocities.
-A common and relatively simple way of doing this is called the \textit{Berendsen thermostat} and defined as
+A common and relatively simple algorithm for this is the so called the \textit{Berendsen thermostat}, defined as
 \begin{align}
 \frac{dT}{dt} = \frac{T_0-T}{\tau}
 \end{align}
-where $T_0$ is the target temperature and $\tau$ a time constant \cite{berendsen1984molecular}. 
-Despite its high efficiency, the Berendsen thermostat is not producing a correct canonical ensemble and is prone to causing various unphysical artefacts.
+where $T_0$ is the target temperature and $\tau$ a time constant. 
+Despite its high efficiency, the Berendsen thermostat is not producing a fully correct canonical ensemble and is prone to causing various unphysical artefacts. \cite{berendsen1984molecular}
 
-The \textit{Nos\'{e}-Hoover thermostat}, on the other hand, accurately samples the canonical ensamble \cite{nose1984unified}. 
+The \textit{Nos\'{e}-Hoover thermostat}, on the other hand, accurately samples the canonical ensamble. 
 Being a so-called \textit{extended system method}, the Nos\'{e}-Hoover thermostat makes use of a virtual particle reservoir, effectively acting as a heat bath. 
-Since this requires equations of motions to be evaluated both for the actual particles and the virtual reservoir, the gained physical accuracy comes at a higher computational cost.
+Since this requires equations of motions to be evaluated both for the actual particles and the virtual reservoir, the gained physical accuracy comes at a higher computational cost. \cite{nose1984unified}
 
 % --------------- MD schematic ------------------------------------------------------------------------------------
 \begin{figure}
@@ -117,9 +117,9 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 
 \subsection{Interatomic potentials}
 
-In an MD simulation, potential energies of simulated particles are calculated using so-called \textit{interatomic potentials} - mathematical functions designed to approximately emulate the interactions between atoms. 
+In an MD simulation, potential energies of simulated particles are calculated using so-called \textit{interatomic potentials} -- mathematical functions designed to approximately emulate the interactions between atoms. 
 These potentials are usually based upon the Born-Oppenheimer model, i.e. that the electrons of all atoms are permanently in the ground state and that all interactions depend purely on the interatomic distance \cite{born1927quantentheorie}. 
-In general terms, the potential energy of an atomistic system can be written as
+In general terms, the potential energy of an atomistic system can thus be written as
 \begin{align}
 V_{tot} = \sum_i^N V_1(\mathbf{r}_i) + \sum_{i,j}^N V_2(\mathbf{r}_i, \mathbf{r}_j) +  \sum_{i,j,k}^N V_3(\mathbf{r}_i, \mathbf{r}_j, \mathbf{r}_k) + ...
 \label{V_tot-ekv}
@@ -127,13 +127,13 @@ V_{tot} = \sum_i^N V_1(\mathbf{r}_i) + \sum_{i,j}^N V_2(\mathbf{r}_i, \mathbf{r}
 where $N$ is the number of atoms in the system and $V_1$, $V_2$ and $V_3$ respectively are one, two and three body terms \cite{potentialsTheory}.
 
 The indices $i$, $j$ and $k$ iterate through the atom positions in three spatial dimensions and can be restricted to $i < j$ and $j < k$ for symmetric interactions such as those encountered in periodic, monoelemental systems. 
-The first term of eq. (\ref{V_tot-ekv}) can be discarded for systems not affected by an external field, an we are thus left with
+The first term of eq. (\ref{V_tot-ekv}) can be discarded for systems not affected by an external field, and we are hence left with
 \begin{align}
 V_{tot} = \sum_i \sum_{j>i} V_2(\mathbf{r}_i, \mathbf{r}_j) + \sum_i \sum_{j>i} \sum_{k > j} V_3(\mathbf{r}_i, \mathbf{r}_j, \mathbf{r}_k) + ...
 \end{align}
-Potentials employing terms of a higher order than two are referred to as many-body potentials, while those using only the two first terms are pair potentials.
+Potentials employing terms of a higher order than two are referred to as \textit{many-body potentials}, while those using only the two first terms are consequently called \textit{pair potentials}.
 
-The atomic structure of metals allows them to be described particularly well using the so-called \textit{Embedded Atom Method} (EAM) formalism, giving the potential energy in the form
+The atomic structure of metals allows them to be described particularly well using the so-called \textit{Embedded Atom Method} (EAM) formalism, which gives the potential energy in the form
 \begin{align}
 V_{tot} = \sum_i^N F_i\, \bigg( \sum_j \rho\, (\mathbf{r}_{ij}) \bigg) + \frac{1}{2} \sum^N_{ij} V_2 (\mathbf{r}_{ij})
 \end{align}
@@ -143,13 +143,13 @@ For covalently bonded materials, it is often more accurate to use a \textit{Bond
 \begin{align}
 V_{ij}(r_{ij}) =bV_{ijk}V_{\rm attractive}(r_{ij}) V_ {\rm repulsive}
 \end{align}
-Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type. \cite{tersoff1988new, brenner1990empirical, finnis1984simple} Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into the pair-terms.
+Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type. \cite{tersoff1988new, brenner1990empirical, finnis1984simple} Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into their pair-terms.
 
 \section{Parallel Algorithms}
 Doubling the side length of a cubical atomic system increases the number of atoms by a factor of eight. 
 Correspondingly, the number of necessary force calculations increases by a factor of  8 to 64, depending on the use of neighbour lists.
-Since we at any given time only store a minimal amount of vector data per atom, MD simulations are generally not very memory intensive.
-Computationally, however, they are indeed expensive due to the large number of force evaluations performed every time step.
+Since we at any given time only store a minimal amount of vector data per atom, this increase in system size is not a particularily demanding memorywise.
+Computationally, however, it is indeed expensive due to the increased number of force evaluations performed every time step.
 
 Interestingly, the nature of MD simulations makes them inherently parallel, allowing the forces for all atoms to be calculated simultaneously. 
 This fact can be exploited by dividing the computational load across multiple processing units. 
@@ -160,7 +160,7 @@ The atom-decompositon algorithm includes appointing $N/P$ atoms to each processo
 The force-decomposition algorithm, on the other hand, divides the cell into three-dimensional boxes, with atoms being re-appointed to the corresponding processor each time they enter a new box. 
 This method limits the communication required to only neighbouring processors, giving a theoretical scaling of $O(N/P)$ for largely parallel simulations.
 The spatial-decomposition algorithm, finally, involves appointing force calculation loops to separate processors.
-This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, lagging behind the spatial-decomposition algorithm in performance. \cite{fincham1987parallel,lammpsMD}
+This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, still lagging behind the spatial-decomposition algorithm in performance. \cite{fincham1987parallel,lammpsMD}
 
 % ---------------------------------------------------------------------------------------------------
 % \section{Analysis of the Results}
