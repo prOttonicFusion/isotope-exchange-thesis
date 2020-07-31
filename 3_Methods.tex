@@ -45,7 +45,7 @@ With a perfect lattice, a simulation cell with periodic boundary conditions accu
 With various defects introduced, we, however, have to make sure that the cell is large enough for the created strain field not to overlap with itself, possibly affecting our results detrimentally.
 
 % [Thermostats, barostats]
-Real systems are seldom isolated and instead exchange at least energy with their surroundings in a number of ways. 
+Real systems are seldom isolated, but rather exchange at least energy with their surroundings in a number of ways. 
 In order to sample a non-isolated thermodynamic ensemble, we need to control the temperature of our simulation manually. 
 The temperature of an atomic system is defined as
 \begin{align}
@@ -127,7 +127,7 @@ V_{tot} = \sum_i^N V_1(\mathbf{r}_i) + \sum_{i,j}^N V_2(\mathbf{r}_i, \mathbf{r}
 where $N$ is the number of atoms in the system and $V_1$, $V_2$ and $V_3$ respectively are one, two and three body terms \cite{potentialsTheory}.
 
 The indices $i$, $j$ and $k$ iterate through the atom positions in three spatial dimensions and can be restricted to $i < j$ and $j < k$ for symmetric interactions such as those encountered in periodic, monoelemental systems. 
-The first term of eq. (\ref{V_tot-ekv}) can be discarded for systems not affected by an external field, and we are hence left with
+The first term of Eq. (\ref{V_tot-ekv}) can be discarded for systems not affected by an external field, and we are hence left with
 \begin{align}
 V_{tot} = \sum_i \sum_{j>i} V_2(\mathbf{r}_i, \mathbf{r}_j) + \sum_i \sum_{j>i} \sum_{k > j} V_3(\mathbf{r}_i, \mathbf{r}_j, \mathbf{r}_k) + ...
 \end{align}
