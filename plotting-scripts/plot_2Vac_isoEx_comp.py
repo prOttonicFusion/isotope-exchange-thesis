@@ -31,7 +31,7 @@ print('Drawing figures ...')
 fsize = [6.0, 7.0]
 
 # Upper x-axis limit [ns]
-xulim = 700.0
+xulim = 2000.0
 
 # axis labels
 ylbl = 'Atoms bound to Vac'
@@ -54,7 +54,9 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tT
 plt.xlim((1, xulim))
 plt.ylim((0,12))
 plt.ylabel(ylbl)
-plt.text(50, 10.8, '(i) 400 K', font)
+plt.text(800, 10.8, '(i) 400 K', font)
+leg = plt.legend(loc='lower right', bbox_to_anchor=(0.99, 0.03))
+leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -67,7 +69,7 @@ plt.xlim((1, xulim))
 plt.ylim((0,12))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(50, 10.8, '(ii) 500K', font)
+plt.text(800, 10.8, '(ii) 500K', font)
 
 
 # Show & save figure
@@ -93,8 +95,6 @@ plt.xlim((1, xulim))
 plt.ylim((0,12))
 plt.ylabel(ylbl)
 plt.text(2, 10.8, '(i) 400 K', font)
-leg = plt.legend(loc='center left', bbox_to_anchor=(0.03, 0.42))
-leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K

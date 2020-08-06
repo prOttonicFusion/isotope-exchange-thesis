@@ -25,7 +25,7 @@ In order to avoid catastrophic errors in the conservation of energy, the time st
 In its purest form, MD requires us to perform $O(N^2)$ force evaluations, with $N$ being the number simulated of particles. 
 In a typical simulation, however, the particles only interact with a limited number of neighbours, and most long-range interactions can be safely disregarded. 
 A common way of doing this is by declaring a cutoff radius for the force calculations, with only particles within this radius from particle $i$ taken into account when evaluating $\mathbf{F}_i(\mathbf{r}_i,t)$. 
-The use of a force cutoff theoretically reduces the scaling of the algorithm down to $O(N)$. \cite{verlet1967computer}
+The use of a force cutoff theoretically reduces the scaling of the algorithm down to $O(N)$  \cite{verlet1967computer}.
 
 % [Periodic boundaries] 
 Despite the use of a force cutoff, most real-world materials are still far too large to be simulated accurately.
@@ -58,11 +58,11 @@ A common and relatively simple algorithm for this is the so called the \textit{B
 \frac{dT}{dt} = \frac{T_0-T}{\tau}
 \end{align}
 where $T_0$ is the target temperature and $\tau$ a time constant. 
-Despite its high efficiency, the Berendsen thermostat is not producing a fully correct canonical ensemble and is prone to causing various unphysical artefacts. \cite{berendsen1984molecular}
+Despite its high efficiency, the Berendsen thermostat is not producing a fully correct canonical ensemble and is prone to causing various unphysical artefacts \cite{berendsen1984molecular}.
 
 The \textit{Nos\'{e}-Hoover thermostat}, on the other hand, accurately samples the canonical ensamble. 
 Being a so-called \textit{extended system method}, the Nos\'{e}-Hoover thermostat makes use of a virtual particle reservoir, effectively acting as a heat bath. 
-Since this requires equations of motions to be evaluated both for the actual particles and the virtual reservoir, the gained physical accuracy comes at a higher computational cost. \cite{nose1984unified}
+Since this requires equations of motions to be evaluated both for the actual particles and the virtual reservoir, the gained physical accuracy comes at a higher computational cost \cite{nose1984unified}.
 
 % --------------- MD schematic ------------------------------------------------------------------------------------
 \begin{figure}
@@ -137,13 +137,13 @@ The atomic structure of metals allows them to be described particularly well usi
 \begin{align}
 V_{tot} = \sum_i^N F_i\, \bigg( \sum_j \rho\, (\mathbf{r}_{ij}) \bigg) + \frac{1}{2} \sum^N_{ij} V_2 (\mathbf{r}_{ij})
 \end{align}
-where  $F_i$ is a function of the summed electron density $\rho (\mathbf{r}_{ij})$ and $\mathbf{r}_{ij}$ denotes the distance $| \mathbf{r}_i - \mathbf{r}_j |$ between the $i$th and $j$th atoms. \cite{EAMmodel,dudarevEAMpotential}. 
+where  $F_i$ is a function of the summed electron density $\rho (\mathbf{r}_{ij})$ and $\mathbf{r}_{ij}$ denotes the distance $| \mathbf{r}_i - \mathbf{r}_j |$ between the $i$th and $j$th atoms \cite{EAMmodel,dudarevEAMpotential}. 
 
 For covalently bonded materials, it is often more accurate to use a \textit{Bond Order Potential} (BOP), generally presented as
 \begin{align}
 V_{ij}(r_{ij}) =bV_{ijk}V_{\rm attractive}(r_{ij}) V_ {\rm repulsive}
 \end{align}
-Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type. \cite{tersoff1988new, brenner1990empirical, finnis1984simple} Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into their pair-terms.
+Examples of BOPs are potentials of Tersoff, Brenner and Finnis-Sinclair type \cite{tersoff1988new, brenner1990empirical, finnis1984simple}. Both BOP and EAM potentials have the functional shape of a typical pair-potential, but act as many-body potentials due to many-body interactions embedded into their pair-terms.
 
 \section{Parallel Algorithms}
 Doubling the side length of a cubical atomic system increases the number of atoms by a factor of eight. 
@@ -153,14 +153,14 @@ Computationally, however, it is indeed expensive due to the increased number of 
 
 Interestingly, the nature of MD simulations makes them inherently parallel, allowing the forces for all atoms to be calculated simultaneously. 
 This fact can be exploited by dividing the computational load across multiple processing units. 
-Parallellisation on $P$ processors can be performed using three principal algorithms; \textit{atom-}, \textit{spatial-} and \textit{force-decompositon}. 
-\cite{fincham1987parallel}
+Parallellisation on $P$ processors can be performed using three principal algorithms; \textit{atom-}, \textit{spatial-} and \textit{force-decomposition} 
+\cite{fincham1987parallel}.
 
 The atom-decompositon algorithm includes appointing $N/P$ atoms to each processor and requires \textit{all-to-all} communication of forces between processors and therefore it scales as $O(N)$, independently of $P$. 
 The force-decomposition algorithm, on the other hand, divides the cell into three-dimensional boxes, with atoms being re-appointed to the corresponding processor each time they enter a new box. 
 This method limits the communication required to only neighbouring processors, giving a theoretical scaling of $O(N/P)$ for largely parallel simulations.
 The spatial-decomposition algorithm, finally, involves appointing force calculation loops to separate processors.
-This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, still lagging behind the spatial-decomposition algorithm in performance. \cite{fincham1987parallel,lammpsMD}
+This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, still lagging behind the spatial-decomposition algorithm in performance \cite{fincham1987parallel,lammpsMD}.
 
 % ---------------------------------------------------------------------------------------------------
 % \section{Analysis of the Results}
