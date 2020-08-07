@@ -53,7 +53,7 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tT
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(105, 70, '(i) 400 K', font)
+plt.text(20, 115, '(i) 400 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8)
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth 
@@ -65,9 +65,10 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T']) 
 plt.xlim((1, xulim))
+plt.ylim((0, 125))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(105, 75, '(ii) 500 K', font)
+plt.text(20, 110, '(ii) 500 K', font)
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # Show & save figure
@@ -92,7 +93,7 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tT
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(1.5, 58, '(i) 400 K', font)
+plt.text(1.5, 110, '(i) 400 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -102,9 +103,10 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T']) 
 plt.xlim((1, xulim))
+plt.ylim((0,110))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(1.5, 75, '(ii) 500 K', font)
+plt.text(1.5, 95, '(ii) 500 K', font)
 #leg = plt.legend(loc='lower left', bbox_to_anchor=(0.02, 0.26))
 #leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
