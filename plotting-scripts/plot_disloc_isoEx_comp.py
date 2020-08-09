@@ -13,6 +13,8 @@ tTH_isoEx_400K = readData(path+'disloc_isoEx_400K_500ns/HinDisl.out', [0,1,2])
 tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_500ns/HinDisl.out', [0,1])
 tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_350ns/HinDisl.out', [0,1,2])
 tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_300ns/HinDisl.out', [0,1])
+tTH_isoEx_700K = readData(path+'disloc_isoEx_700K_100ns/HinDisl.out', [0,1,2])
+tT_diff_700K = readData(path+'disloc_isoEx_700K_0H_100ns/HinDisl.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
@@ -20,13 +22,14 @@ tTH_isoEx_400K[:,0] *= cf
 tT_diff_400K[:,0] *= cf
 tTH_isoEx_500K[:,0] *= cf
 tT_diff_500K[:,0] *= cf
-
+tTH_isoEx_700K[:,0] *= cf
+tT_diff_700K[:,0] *= cf
 
 # ============================== PLOT STUFF =============================
 print('Drawing figures ...')
 
 # Figure dimensions [x, y]
-fsize = [6.0, 7.0]
+fsize = [6.0, 8.0]
 
 # Upper x-axis limit [ns]
 xulim = 400.0
@@ -46,7 +49,7 @@ def plotter(x, y, isoExStle, lbl):
 
 
 # 400 K
-plt.subplot(2,1,1)
+plt.subplot(3,1,1)
 plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
@@ -57,18 +60,28 @@ plt.text(50, 150, '(i) 400 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
-plt.subplot(2,1,2)
+plt.subplot(3,1,2)
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T']) 
 plt.xlim((1, xulim))
-plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(50, 150, '(ii) 500 K', font)
+plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+
+# 700 K
+plt.subplot(3,1,3)
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1]+tTH_isoEx_700K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
+plotter(tT_diff_700K[0:len(tTH_isoEx_700K[:, 0]), 0], tT_diff_700K[0:len(tTH_isoEx_700K[:, 0]), 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
+plt.xlim((1, xulim))
+plt.xlabel(xlbl)
+plt.ylabel(ylbl)
 leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8) 
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
-#plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+plt.text(50, 117, '(iii) 700 K', font)
 
 # Show & save figure
 plt.tight_layout()
@@ -84,7 +97,7 @@ def plotter(x, y, isoExStle, lbl):
     plt.semilogx(x, y, **isoExStle, label=lbl)
 
 # 400 K
-plt.subplot(2,1,1)
+plt.subplot(3,1,1)
 plotter(tT_diff_400K[:, 0], tT_diff_400K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
@@ -97,17 +110,27 @@ plt.text(1.3, 175, '(i) 400 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
-plt.subplot(2,1,2)
+plt.subplot(3,1,2)
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T']) 
 plt.xlim((1, xulim))
 plt.ylim((0, 200))
-plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(1.3, 175, '(ii) 500 K', font)
-#plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
+
+# 700 K
+plt.subplot(3,1,3)
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1]+tTH_isoEx_700K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
+plotter(tT_diff_700K[0:len(tTH_isoEx_700K[:, 0]), 0], tT_diff_700K[0:len(tTH_isoEx_700K[:, 0]), 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
+plt.xlim((1, xulim))
+plt.xlabel(xlbl)
+plt.ylabel(ylbl)
+plt.text(1.3, 120, '(iii) 700K', font)
 
 # Show & save figure
 plt.tight_layout()
