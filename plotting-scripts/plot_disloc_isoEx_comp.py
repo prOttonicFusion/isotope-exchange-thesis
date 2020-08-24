@@ -130,7 +130,7 @@ plotter(tT_diff_700K[init:final:step, 0], tT_diff_700K[init:final:step, 1], isoE
 plt.xlim((1, xulim))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-plt.text(1.3, 120, '(iii) 700K', font)
+plt.text(1.3, 120, '(iii) 700 K', font)
 
 # Show & save figure
 plt.tight_layout()
