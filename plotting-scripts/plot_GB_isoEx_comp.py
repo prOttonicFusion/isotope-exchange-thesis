@@ -9,8 +9,8 @@ from dataUtils import readData
 path += 'GB_3000W_isoEx_results/'
 
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
-tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_500ns/HinGB.out', [0,1,2])
-tT_diff_400K = readData(path+'yGB_3000W_0H_73T_400K_550ns/HinGB.out', [0,1])
+tTH_isoEx_400K = readData(path+'yGB_3000W_100H_73T_400K_600ns/HinGB.out', [0,1,2])
+tT_diff_400K = readData(path+'yGB_3000W_0H_73T_400K_700ns/HinGB.out', [0,1])
 tTH_isoEx_500K = readData(path+'yGB_3000W_100H_73T_500K_500ns/HinGB.out', [0,1,2])
 tT_diff_500K = readData(path+'yGB_3000W_0H_73T_500K_500ns/HinGB.out', [0,1])
 tTH_isoEx_700K = readData(path+'yGB_3000W_100H_73T_700K_200ns/HinGB.out', [0,1,2])
@@ -57,8 +57,6 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tT
 plt.xlim((1, xulim))
 plt.ylabel(ylbl)
 plt.text(40, 113, '(i) 400 K', font)
-leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8)
-leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth 
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -71,6 +69,8 @@ plt.xlim((1, xulim))
 plt.ylim((0, 125))
 plt.ylabel(ylbl)
 plt.text(40, 109, '(ii) 500 K', font)
+leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8)
+leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth 
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 700 K
