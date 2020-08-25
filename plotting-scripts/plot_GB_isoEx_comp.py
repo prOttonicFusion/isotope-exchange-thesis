@@ -33,7 +33,7 @@ print('Drawing figures ...')
 fsize = [6.0, 8.0]
 
 # Upper x-axis limit
-xulim = 500.0
+xulim = 1000.0
 
 # axis labels
 ylbl = 'Atoms bound to GB'
@@ -57,6 +57,8 @@ plotter(tTH_isoEx_400K[init:final:step, 0], tTH_isoEx_400K[init:final:step,1]+tT
 plt.xlim((1, xulim))
 plt.ylabel(ylbl)
 plt.text(40, 113, '(i) 400 K', font)
+leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8)
+leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth 
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
 # 500 K
@@ -81,8 +83,6 @@ plt.xlim((1, xulim))
 plt.ylim((0, 100))
 plt.xlabel(xlbl)
 plt.ylabel(ylbl)
-leg = plt.legend(loc='upper right', bbox_to_anchor=(0.999, 0.999), framealpha=0.8)
-leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth 
 plt.text(40, 87, '(iii) 700 K', font)
 
 # Show & save figure
