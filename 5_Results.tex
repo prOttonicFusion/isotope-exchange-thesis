@@ -52,7 +52,7 @@ The DFT binding energy for the sixth H is around 0.3 eV, and above 0.8 eV for al
 A consequence of this, assuming that the DFT binding energies indeed are accurate, is that in a real "vacuum annealing" experiment, annealing at below ca 500 K would only result in the detrapping of the sixth and loosest bound T.
 The remaining five T would subsequently have very low probabilities of becoming detrapped.
 
-In Fig. \ref{Fig:1Vac_results}, however, we see that about 2 to 3 T are detrapped from the vacancy in the monoisotopic simulation corresponding to "vacuum annealing".
+In Fig. \ref{Fig:1Vac_results}, however, we see that about 2 to 3 T are detrapped from the vacancy in the monoisotopic simulation corresponding to 'vacuum annealing'.
 This is a result of the too low MD binding energies plotted in Fig. \ref{Fig:Ebind1H_DFT}.
 How would the present simulation results then change if the binding energies for the potential would be roughly the same as for DFT?
 Firstly, there would probably be no less than five T bound to the monovacancy in the monoisotopic case, due to the relatively high binding energy of the fifth T (ca 0.8 eV).
@@ -83,12 +83,12 @@ We can also see from both Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results}
 % ----------------------------------------------------------------------------------
 \section{Dislocations}
 % ----------------------------------------------------------------------------------
-The dislocation results are shown in Fig. \ref{Fig:disloc_results} and indicate an enhanced T-removal rate when utilising isotope exchange at 500 K. 
+The dislocation results are shown in Fig. \ref{Fig:disloc_results} and indicate an enhanced T-removal rate when utilising isotope exchange at 500 and 700 K. 
 At 400 K, on the other hand, there is no significant difference between the two methods.
 
 Comparing the T-removal rates at 700 K, we can conclude that total T-removal occurs around 10 times faster in the isotope exchange case compared to the monoisotopic case.
 In comparison to the vacancy results in Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results}, the overall T-removal rate for a dislocation appears to exceed that observed in the vacancies for both the isotope exchange and monoisotopic cases.
-E.g. for the isotope exchange cases we have an average T-removal rate of 0.40 atoms/ns from a dislocation, but just 0.005 atoms/ns from a monovacancy at 500 K.
+E.g. for the isotope exchange cases at 500 K we have normalised average T-removal rates, $\delta_{\text{T}}$, of 0.003 and 0.01 1/ns for a dislocation and a monovacancy, respectively.
 
 Fig. \ref{Fig:disloc_results} additionally reveals that the total number of H and T bound to the defect increases slightly during the isotope exchange simulation, possibly due to insufficient saturation runs. 
 
@@ -117,9 +117,10 @@ Fig. \ref{Fig:disloc_results} additionally reveals that the total number of H an
 \section{Grain boundaries}
 % ----------------------------------------------------------------------------------
 The grain boundary results are shown in Fig. \ref{Fig:GB_results}. 
-Here, as was the case with the dislocation, an improved T-removal rate can only be observed at 500 K.
-Similarly, the exact difference in removal rate was difficult to determine without excessive use of computing resources, but can be clearly seen from Fig. \ref{Fig:GB_results} to be several orders of magnitude higher for the isotope exchange simulations.
+Similarly to the dislocation case, a significant increase in the T-removal rate can be observed when isotope exchange is used at temperatures of at least 500 K.
+The exact difference in removal rates was difficult to determine without excessive use of computing resources, but can be clearly seen from Fig. \ref{Fig:GB_results} to be several orders of magnitude higher for the isotope exchange simulations.
 
+The normalised T-removal rate at 500 K was around $\delta_{\text{T}} = 0.0017$ 1/ns, i.e. around six times lower than the corresponding value for the monovacancy and half that of the dislocation.
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
