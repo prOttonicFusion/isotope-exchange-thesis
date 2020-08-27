@@ -14,7 +14,7 @@ tT_diff_400K = readData(path+'disloc_isoEx_400K_0H_500ns/HinDisl.out', [0,1])
 tTH_isoEx_500K = readData(path+'disloc_isoEx_500K_350ns/HinDisl.out', [0,1,2])
 tT_diff_500K = readData(path+'disloc_isoEx_500K_0H_300ns/HinDisl.out', [0,1])
 tTH_isoEx_700K = readData(path+'disloc_isoEx_700K_100ns/HinDisl.out', [0,1,2])
-tT_diff_700K = readData(path+'disloc_isoEx_700K_0H_100ns/HinDisl.out', [0,1])
+tT_diff_700K = readData(path+'disloc_isoEx_700K_0H_150ns/HinDisl.out', [0,1])
 
 # Convert timesteps --> time in ns
 cf = 1e-6
