@@ -25,7 +25,7 @@ MD2V  = readData('../Ebind-data/Ebind_MD_2V.dat', [0,1])
 print('Drawing figures ...')
 
 # ------------------------ H&T isoEx vs diffusion --------------------------
-plt.figure(1,[6, 3.5])
+plt.figure(1,[8, 5])
 ax = plt.subplot(111)
 
 # Plot marker & line styles
@@ -44,7 +44,7 @@ plotter(MD2V[:,0], MD2V[:,1], stl[2], lbls[2])
 plt.xlabel('Number of H atoms')
 plt.ylabel('Binding Energy [eV]')
 plt.locator_params(axis='x', nbins=10)       # Nr. of x-tick labels
-leg = ax.legend(bbox_to_anchor=(0.63, 0.7))
+leg = plt.legend(loc='upper right', bbox_to_anchor=(0.99, 0.99))
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 
 # Adjust margins
