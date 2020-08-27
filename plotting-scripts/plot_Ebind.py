@@ -25,7 +25,7 @@ MD2V  = readData('../Ebind-data/Ebind_MD_2V.dat', [0,1])
 print('Drawing figures ...')
 
 # ------------------------ H&T isoEx vs diffusion --------------------------
-plt.figure(1,[8, 5])
+plt.figure(1,[7, 4.5])
 ax = plt.subplot(111)
 
 # Plot marker & line styles
