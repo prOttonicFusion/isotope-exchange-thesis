@@ -12,20 +12,22 @@ path += '1Vac_isoEx_results/'
 tTH_isoEx_400K = readData(path+'1Vac_2000W_20H_6T_400K_3100ns/HinVac.out', [0,1,2])
 tTH_isoEx_450K = readData(path+'1Vac_2000W_20H_6T_450K_1200ns/HinVac.out', [0,1,2])
 tTH_isoEx_500K = readData(path+'1Vac_2000W_20H_6T_500K_200ns/HinVac.out', [0,1,2])
-#tTH_isoEx_500K_inverse = readData(path+'1Vac_2000W_6H_20T_500K_300ns/HinVac.out', [0,1,2])
+tTH_isoEx_700K = readData(path+'1Vac_2000W_20H_6T_700K_100ns/HinVac.out', [0,1,2])
 tT_diff_400K = readData(path+'1Vac_2000W_0H_6T_400K_3200ns/HinVac.out', [0,1])
 tT_diff_450K = readData(path+'1Vac_2000W_0H_6T_450K_1600ns/HinVac.out', [0,1]) 
-tT_diff_500K = readData(path+'1Vac_2000W_0H_6T_500K_800ns/HinVac.out', [0,1]) 
+tT_diff_500K = readData(path+'1Vac_2000W_0H_6T_500K_800ns/HinVac.out', [0,1])
+#tT_diff_700K = readData(path+'1Vac_2000W_0H_6T_700K_1100ns/HinVac.out', [0,1]) 
 
 # Convert timesteps --> time in ns
 cf = 1e-6
 tTH_isoEx_400K[:,0] *= cf
 tTH_isoEx_450K[:,0] *= cf
 tTH_isoEx_500K[:,0] *= cf
-#tTH_isoEx_500K_inverse[:,0] *= cf 
+#tTH_isoEx_700K[:,0] *= cf
 tT_diff_400K[:,0] *= cf
 tT_diff_450K[:,0] *= cf
 tT_diff_500K[:,0] *= cf
+#tT_diff_700K[:,0] *= cf
 
 
 # ============================== PLOT STUFF =============================
@@ -82,22 +84,22 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
-plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(1500, 5.3, '(iii) 500 K', font)
 leg = plt.legend(loc='lower right', bbox_to_anchor=(0.99, 0.05))
 leg.get_frame().set_linewidth(1.5*pltm)  # Legend bow linewidth
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
-# 500 K; inverse isotopes
-#plt.subplot(4,1,4)
-#init, step, final = [0,10,-1]
-#plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
-#plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+# 700 K
+#plt.subplot(3,1,3)
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1]+tTH_isoEx_700K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
+#plotter(tT_diff_700K[init:final:step, 0], tT_diff_700K[init:final:step, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 #plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 #plt.ylabel(ylbl)
-#plt.text(700, 5.3, '(iv) 500 K; inverted', font)
+#plt.text(1500, 5.3, '(iii) 700 K', font)
 
 # Show & save figure
 plt.tight_layout()
@@ -133,7 +135,7 @@ plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step, 1], 
 plotter(tTH_isoEx_450K[init:final:step, 0], tTH_isoEx_450K[init:final:step,1]+tTH_isoEx_450K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_450K[:, 0], tT_diff_450K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
-#plt.xlabel(xlbl)
+# #plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(ii) 450 K', font)
 plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
@@ -146,20 +148,20 @@ plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step, 1], 
 plotter(tTH_isoEx_500K[init:final:step, 0], tTH_isoEx_500K[init:final:step,1]+tTH_isoEx_500K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
 plotter(tT_diff_500K[:, 0], tT_diff_500K[:, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 plt.xlim((1, xulim))
-plt.xlabel(xlbl)
 plt.ylabel(ylbl)
 plt.text(2, 5.3, '(iii) 500 K', font)
 #plt.gca().axes.get_xaxis().set_ticklabels([]) # Hide x-axis tick labels
 
-# 500 K; inverse isotopes
-#plt.subplot(4,1,4)
-#init, step, final = [0,10,-1]
-#plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
-#plotter(tTH_isoEx_500K_inverse[init:final:step, 0], tTH_isoEx_500K_inverse[init:final:step, 1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+# 700 K
+#plt.subplot(3,1,3)
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,2], isoEx_style['H_iso'], isoEx_labels['H_iso'])
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1], isoEx_style['T_iso'], isoEx_labels['T_iso'])
+#plotter(tTH_isoEx_700K[init:final:step, 0], tTH_isoEx_700K[init:final:step,1]+tTH_isoEx_700K[init:final:step,2], isoEx_style['H+T'], isoEx_labels['H+T'])
+#plotter(tT_diff_700K[init:final:step, 0], tT_diff_700K[init:final:step, 1], isoEx_style['T_diff'], isoEx_labels['T_diff'])
 #plt.xlim((1, xulim))
 #plt.xlabel(xlbl)
 #plt.ylabel(ylbl)
-#plt.text(2, 5.3, '(iv) 500 K; inverted', font)
+#plt.text(2, 5.3, '(iii) 700 K', font)
 
 # Show & save figure
 plt.tight_layout()

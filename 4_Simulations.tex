@@ -42,9 +42,11 @@ In this scope, 'far away' was defined as a distance $d_{\rm{rmv}} $ from the ini
 Depending on the geometry of the defect, this parameter had a value of 14...40 \AA, i.e. ca 4...13 unit cells.
 
 As we intend to verify that isotope exchange indeed results in more effective tritium removal than conventional methods, setups for comparison simulations were constructed by omitting the added H and only simulating the spontaneous diffusion of T away from the defect. 
-These monoisotopic systems should approximately emulate vacuum annealing conditions.
+These monoisotopic systems are used for emulating vacuum annealing conditions.
 
-Finally, all sets of isotope exchange and monoisotope simulations were run at both 400 and 500 K, to qualitatively study the temperature dependence of the phenomenon.  
+Finally, all sets of isotope exchange and monoisotope simulations were run at 400, 500 and 700 K, to qualitatively study the temperature dependence of the phenomenon.
+To allow for shorter wall-times, the simulations at 400 and 500 K where cut off when all T had been detrapped in the isotope exchange case.
+At 700 K, however, the simulations where continued to 1000 ns for each defect type, allowing us to compare the T-removal rates for not only the isotope exchange versus monoisotopic cases, but across defect types.   
 
 
 % --------------- IsoEx MD ------------------------------------------------------------------------------------
@@ -55,10 +57,10 @@ Finally, all sets of isotope exchange and monoisotope simulations were run at bo
 decision/.style = {diamond, draw, fill=green!40, 
     text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt},
 block/.style = {rectangle, draw, fill=cyan!30, 
-    text width=12em, text centered, rounded corners, minimum height=2em},
+    text width=12em, text centered, rounded corners, minimum height=1.5em},
 smallblock/.style = {block, text width=7em},
 cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
-    minimum height=2em}
+    minimum height=1.5em}
     }
 \begingroup  % compress equations
 \medmuskip=2mu
@@ -66,15 +68,15 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \thickmuskip=2mu
 \begin{tikzpicture}
 \matrix (m)[matrix of nodes, column  sep=0.0cm,row  sep=5mm, align=center, nodes={rectangle,draw, anchor=south} ]{
-   |[block] (initI)| {Create simulation cell containing defect} & \\
-   |[block] (initII)| {Relax \& Deposit H} & \\
-    |[block] (MD)| {Run MD for 5000 steps}          &  \\
-    |[block] (DelT)| {Delete T atoms for which $d_i > d_{\text{rmv}}$}          &  \\
+   |[block] (initI)| {\small Create simulation cell containing defect} & \\
+   |[block] (initII)| {\small Relax and Deposit H} & \\
+    |[block] (MD)| {\small Run MD for 5000 steps}          &  \\
+    |[block] (DelT)| {\small Delete T atoms for which $d_i > d_{\text{rmv}}$}          &  \\
 %    |[block] (Calcd)| {Calculate $d_i$}          &  \\
 %    |[decision] (IsOut)| {$d_i > d_{\rm{rmv}}$?}              &  \\
 %       & |[smallblock] (Rmv)| {Remove $i$th T}         &  \\
-   |[decision] (IsEnd)| {End condition reached?}              &  \\
-   |[block] (End)| {Save results \& quit}   & \\
+   |[decision] (IsEnd)| {\small End condition reached?}              &  \\
+   |[block] (End)| {\small Save results and quit}   & \\
 };
 \path [>=latex,->] (initI) edge (initII);
 \path [>=latex,->] (initII) edge (MD);
@@ -166,11 +168,18 @@ The W atoms are rendered translucent to display the positions of the hydrogen is
 \end{figure}
 
 % ---------------------------------------------------------------------------------------------------
-\section{Data Ananlysis}
+\section{Data Analysis}
 % ---------------------------------------------------------------------------------------------------
 
 For each successful simulation, two coordinate dump files were produced, one containing the coordinates of the H and T atoms every 250 time steps ($2.5\cdot 10^{-4}$ ns) and another with the W atom coordinates every $5\cdot 10^5$ time steps (0.5 ns).
 Since the motion of the defects themselves was practically negligible, the number of H and T bound to a defect could be determined by defining a geometric region in space around the defect and overlaying this region with each frame of the H-T dump file.
 
 In practice, this was performed by parsing the dump files with a Fortran program, which checked whether each atom was located inside or outside the specified region and outputted the numbers of H and T in the defect as functions of time.
+
+As a means of comparing the T-removal rates between defects, we can use normalised average removal rates calculated as
+\begin{align}
+\delta_{\text{T}} = \frac{\left(N_{\text{T}}^{\text{initial}}-N_{\text{T}}^{\text{final}}\right)/N_{\text{T}}^{\text{initial}}}{\Delta t}
+\label{Eq:AverageRemovalRate}
+\end{align}
+where $N_{\text{T}}^{\text{initial}}$ is the initial number of T in the defect and $\Delta t$ is the time passed in nanoseconds while removing $N_{\text{T}}^{\text{initial}}-N_{\text{T}}^{\text{final}}$ atoms.
 
