@@ -108,7 +108,7 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \draw [>=latex,->] (m-7-1.south) -- node[right] {yes}(m-8-1);
 \end{tikzpicture}
 \endgroup
-\caption{A flowchart representation of a typical Molecular Dynamics simulation. Above, $f$ and $g$ refer to two different functions of the timestep and the acceleration. In the most simple case these would be $f(\mathbf{a}_i,\Delta t) = \mathbf{v}_i\Delta t + \mathbf{a}_i\Delta t^2$ and $g(\mathbf{a}_i,\Delta t) = \mathbf{a}_i\Delta t$, respectively.} 
+\caption{A flowchart representation of a typical Molecular Dynamics simulation. Above, $f$ and $g$ refer to two different functions of the time step and the acceleration. In the most simple case these would be $f(\mathbf{a}_i,\Delta t) = \mathbf{v}_i\Delta t + \mathbf{a}_i\Delta t^2$ and $g(\mathbf{a}_i,\Delta t) = \mathbf{a}_i\Delta t$, respectively.} 
 \label{MD-schema}
 \end{center}
 \end{figure}
@@ -156,7 +156,7 @@ This fact can be exploited by dividing the computational load across multiple pr
 Parallellisation on $P$ processors can be performed using three principal algorithms; \textit{atom-}, \textit{spatial-} and \textit{force-decomposition} 
 \cite{fincham1987parallel}.
 
-The atom-decompositon algorithm includes appointing $N/P$ atoms to each processor and requires \textit{all-to-all} communication of forces between processors and therefore it scales as $O(N)$, independently of $P$. 
+The atom-decomposition algorithm includes appointing $N/P$ atoms to each processor and requires \textit{all-to-all} communication of forces between processors and therefore it scales as $O(N)$, independently of $P$. 
 The force-decomposition algorithm, on the other hand, divides the cell into three-dimensional boxes, with atoms being re-appointed to the corresponding processor each time they enter a new box. 
 This method limits the communication required to only neighbouring processors, giving a theoretical scaling of $O(N/P)$ for largely parallel simulations.
 The spatial-decomposition algorithm, finally, involves appointing force calculation loops to separate processors.

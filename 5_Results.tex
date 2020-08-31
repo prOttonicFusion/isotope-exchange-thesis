@@ -4,13 +4,17 @@
 
 % ----------------------------------------------------------------------------------
 \section{Vacancies}
+\label{Section:Vac_results}
 % ----------------------------------------------------------------------------------
 In Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results} we can see the number of T and H atoms bound to the mono- and divacancies as a function of time and at different temperatures. 
 For comparison, the results of the monoisotopic, 'vacuum annealing', simulations are also shown. 
 We can see that at all three temperatures, T-removal from the monovacancy occurs at a higher rate when isotope exchange is used, compared to the monoisotopic cases.
-For the divacancies (Fig. \ref{Fig:2Vac_results}), the T-removal using isotope exchange occurs nearly as fast as in the monovacancy case, despite starting with nearly twice the amount T. 
-While the difference in both cases is more prominent at lower temperatures, it is noticeable also at 500 K, where removal through pure diffusion starts to play a significant role.
 Despite us aiming mainly for qualitative results, a semi-quantitative comparison reveals the T-removal rate to be around 50 times higher when employing isotope exchange compared to monoisotopic simulations in monovacancies. 
+For the isotope exchange case at 500 K, the normalised T-removal rate, $\delta_{\text{T}}$, was determined to be 0.009 atoms/ns.
+
+Compared to the monovacancies, T-removal using isotope exchange occurs in divacancies (Fig. \ref{Fig:2Vac_results}) at a slightly higher normalised T-removal rate of $\delta_{\text{T}} = 0.01$ atoms/ns.
+
+While the difference in both cases is more prominent at lower temperatures, it is noticeable also at 500 K, where removal through pure diffusion starts to play a significant role.
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
@@ -25,7 +29,7 @@ Despite us aiming mainly for qualitative results, a semi-quantitative comparison
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-\caption{Number of H and T atoms bound to the monovacancy for isotope exchange and monoisotopic diffusion simulations. The number of trapped T in the monovacancy decreases much faster in the simulations with isotope exchange, compared to the monoisotopic cases.}
+\caption{Number of H and T atoms bound to the monovacancy for isotope exchange and monoisotopic diffusion simulations. The number of trapped T in the monovacancy decreases much faster in the simulations with isotope exchange, compared to the monoisotopic cases. The linear time scale plots are shown for qualitative comparison only.}
  \label{Fig:1Vac_results} 
 \end{figure}
 
@@ -43,7 +47,7 @@ Despite us aiming mainly for qualitative results, a semi-quantitative comparison
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms bound to the divacancy for isotope exchange and monoisotopic diffusion simulations. Despite the nearly doubled number of T, the removal with isotope exchange occurs at a similar rate than in the monovacancy simulations.}
+   \caption{Number of H and T atoms bound to the divacancy for isotope exchange and monoisotopic diffusion simulations. Despite the nearly doubled number of T, the removal with isotope exchange occurs at a similar rate than in the monovacancy simulations. The linear time scale plots are shown for qualitative comparison only.}
    \label{Fig:2Vac_results} 
 \end{figure}
 
@@ -88,7 +92,7 @@ At 400 K, on the other hand, there is no significant difference between the two 
 
 Comparing the T-removal rates at 700 K, we can conclude that total T-removal occurs around 10 times faster in the isotope exchange case compared to the monoisotopic case.
 In comparison to the vacancy results in Fig. \ref{Fig:1Vac_results} and \ref{Fig:2Vac_results}, the overall T-removal rate for a dislocation appears to exceed that observed in the vacancies for both the isotope exchange and monoisotopic cases.
-E.g. for the isotope exchange cases at 500 K we have normalised average T-removal rates, $\delta_{\text{T}}$, of 0.003 and 0.01 atoms/ns for a dislocation and a monovacancy, respectively.
+The normalised T-removal rate for dislocations at 500 K was $\delta_{\text{T}} = 0.003$ atoms/ns, when isotope exchange was used.
 
 Fig. \ref{Fig:disloc_results} additionally reveals that the total number of H and T bound to the defect increases slightly during the isotope exchange simulation, possibly due to insufficient saturation runs. 
 
@@ -107,7 +111,7 @@ Fig. \ref{Fig:disloc_results} additionally reveals that the total number of H an
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms bound to the dislocation for isotope exchange and monoisotopic diffusion simulations}
+   \caption{Number of H and T atoms bound to the dislocation for isotope exchange and monoisotopic diffusion simulations. The linear time scale plots are shown for qualitative comparison only.}
    \label{Fig:disloc_results} 
 \end{figure}
 
@@ -119,8 +123,7 @@ Fig. \ref{Fig:disloc_results} additionally reveals that the total number of H an
 The grain boundary results are shown in Fig. \ref{Fig:GB_results}. 
 Similarly to the dislocation case, a significant increase in the T-removal rate can be observed when isotope exchange is used at temperatures of at least 500 K.
 The exact difference in removal rates was difficult to determine without excessive use of computing resources, but can be clearly seen from Fig. \ref{Fig:GB_results} to be several orders of magnitude higher for the isotope exchange simulations.
-
-The normalised T-removal rate at 500 K was around $\delta_{\text{T}} = 0.0017$ atoms/ns, i.e. close to six times lower than the corresponding value for the monovacancy and half that of the dislocation.
+The normalised T-removal rate at 500 K appears to be around $\delta_{\text{T}} = 0.0017$ atoms/ns.
 
 \begin{figure}[!ht]
 \begin{subfigure}{.5\textwidth}
@@ -135,7 +138,7 @@ The normalised T-removal rate at 500 K was around $\delta_{\text{T}} = 0.0017$ a
   \caption{Linear time scale}
   %\label{fig:sub-second}
 \end{subfigure}
-   \caption{Number of H and T atoms bound to the grain boundary for isotope exchange and monoisotopic diffusion simulations}
+   \caption{Number of H and T atoms bound to the grain boundary for isotope exchange and monoisotopic diffusion simulations. The linear time scale plots are shown for qualitative comparison only.}
    \label{Fig:GB_results} 
 \end{figure}
 
@@ -146,4 +149,8 @@ The normalised T-removal rate at 500 K was around $\delta_{\text{T}} = 0.0017$ a
 The isotope exchange mechanism has now been confirmed to occur in monovacancies and vacancy clusters. 
 The effect has also been observed in dislocations and grain boundaries, but is not as pronounced in these more extensive defects, probably due to their larger hydrogen trapping capacity and the almost continuous binding energy range of about 0 to 0.9 eV \cite{grigorev2015interaction}.
 
+Comparing the normalised T-removal rates of the various defect types, we see that the removal occurs fastest in vacancies ($\delta_{\text{T}} = 0.01$ atoms/ns) and slowest in grain boundaries ($\delta_{\text{T}} = 0.0017$ atoms/ns). 
+Dislocations ($\delta_{\text{T}} = 0.003$ atoms/ns) fell in between the other two, with a normalised removal rate almost twice that of the grain boundary, but less than half of the rate observed for the vacancy.
 
+The validity of the results presented in this thesis is discussed for the vacancy case in section \ref{Section:Vac_results}, but can be generalised to also apply for the other two defect types. 
+Although a direct comparison with experiments is difficult due to the small scale -- both time- and lengthwise -- of the simulations, the qualitative aspects of our results seem to agree with experimental studies such as \cite{alimov2011hydrogen}, \cite{roth2013hydrogen}, \cite{barton2014deuterium} and \cite{ahlgren2019hydrogen}. 

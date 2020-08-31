@@ -296,12 +296,12 @@
 \def\reallyempty{}
 \if@english
   \begin{tabular}{l l}
-  Supervisor(s): & \@prof\\
+  Supervisor: & \@prof\\
   &\\
   \ifx\@censor\reallyempty
   &\\
   \else 
-  Examiner(s): & \@censor\\
+  Examiners: & \@censor\\
   \fi
   &\\
   \end{tabular}

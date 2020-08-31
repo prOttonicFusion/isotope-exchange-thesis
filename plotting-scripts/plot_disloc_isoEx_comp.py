@@ -32,7 +32,7 @@ print('Drawing figures ...')
 fsize = [6.0, 8.0]
 
 # Upper x-axis limit [ns]
-xulim = 400.0
+xulim = 500.0
 
 # axis labels
 ylbl = 'Atoms bound to disl.'
