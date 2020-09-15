@@ -1,5 +1,5 @@
 # A Molecular Dynamics Study of Hydrogen Isotope Exchange in Tungsten
-My masters thesis.
+My Master's Thesis.
 
 ## Requirements
 - [TexLive](https://www.tug.org/texlive/) or similar
