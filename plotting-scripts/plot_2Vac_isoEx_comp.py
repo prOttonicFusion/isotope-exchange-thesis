@@ -11,8 +11,8 @@ path += '2Vac_isoEx_results/'
 # HinVac.out format: Timestep NTinVac NHinVac NTinCell
 tTH_isoEx = readData(path+'2Vac_2000W_20H_10T_500K_500ns/HinVac.out', [0,1,2])
 tTH_diff  = readData(path+'2Vac_2000W_0H_10T_500K_1000ns/HinVac.out', [0,1,2])
-tTH_isoEx_400K = readData(path+'2Vac_2000W_20H_10T_400K_700ns/HinVac.out', [0,1,2])
-tT_diff_400K  = readData(path+'2Vac_2000W_0H_10T_400K_500ns/HinVac.out', [0,1,2])
+tTH_isoEx_400K = readData(path+'2Vac_2000W_20H_10T_400K_3600ns/HinVac.out', [0,1,2])
+tT_diff_400K  = readData(path+'2Vac_2000W_0H_10T_400K_3600ns/HinVac.out', [0,1,2])
 #tTH_isoEx_700K = readData(path+'2Vac_2000W_20H_10T_700K_100ns/HinVac.out', [0,1,2])
 #tT_diff_700K  = readData(path+'2Vac_2000W_0H_10T_700K_1000ns/HinVac.out', [0,1,2])
 
@@ -33,7 +33,7 @@ print('Drawing figures ...')
 fsize = [6.0, 5.0]
 
 # Upper x-axis limit [ns]
-xulim = 2000.0
+xulim = 3600.0
 
 # axis labels
 ylbl = 'Atoms bound to Vac'
