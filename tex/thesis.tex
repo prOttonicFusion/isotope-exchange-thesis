@@ -1,6 +1,6 @@
 \documentclass[english,twoside,openright]{HYgradu}
 \usepackage{Preamble}
-\graphicspath{{./figures/}}
+\graphicspath{{../figures/}}
 
 % Add subfigure
 \newcommand{\minifig}[1]{  
@@ -20,13 +20,6 @@
 	\end{picture} 
     \end{minipage}
 }
-%-------------------------------------------------------------------------------
-% HEADER & FOOTER
-%-------------------------------------------------------------------------------
-%\fancyhf{}
-%\fancyhead[L]{Otto Lindblom}
-%\fancyhead[R]{014447947}
-%\fancyfoot[R]{Sida \thepage\ av \pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
 % TITLE PAGE & ABSTRACT PAGE
@@ -47,16 +40,12 @@
 \additionalinformation{}
 \classification{}
 
-% if you want to quote someone special. You can comment this line and there will be nothing on the document.
-%\quoting{Bachelor's degrees make pretty good placemats if you get them laminated.}{Jeph Jacques} 
-
 \begin{document}
 
 % Generate title page.
 \maketitle
 
 % English abstract
-
 \begin{abstract}
 Due to its exceptional thermal properties and irradiation resistance, tungsten is the material of choice for critical plasma-facing components in many leading thermonuclear fusion projects.
 Owing to the natural retention of hydrogen isotopes in materials such as tungsten, the safety of a fusion device depends heavily on the inventory of radioactive tritium in its plasma-facing components. 
@@ -130,14 +119,11 @@ Käyttämällä pienikokoisia järjestelmiä, olemme onnistuneet simuloimaan iso
 \mytableofcontents
 
 \mynomenclature
-%\printnomenclature
 
 
 %-------------------------------------------------------------------------------
 % CONSTANTS, VARIABLES & ETC.
 %-------------------------------------------------------------------------------
-%\nomenclature{$p$}{Pressure \nomunit{atm}}
-%\nomenclature{$V$}{Volume \nomunit{\AA$^3$}}
 \nomenclature{$\delta_{\text{T}} $}{Normalised average tritium removal rate \nomunit{Atoms/ns}}
 \nomenclature{$V$}{Potential energy \nomunit{eV}} 
 \nomenclature{$\mathbf{r}_i$}{Position vector of $i$th atom \nomunit{\AA}}
@@ -147,7 +133,6 @@ Käyttämällä pienikokoisia järjestelmiä, olemme onnistuneet simuloimaan iso
 \nomenclature{T}{Tritium atom}
 \nomenclature{$k_{\text{B}}$}{Boltzmann constant \nomunit{1.38$\times10^{-23}$ J/K}}
 \nomenclature{$a$}{Lattice constant \nomunit{\AA}}
-%\nomenclature{$a$}{Tungsten lattice contstant \nomunit{3.165 \AA}}
 \nomenclature{$m_{\rm W}$}{Tungsten mean atomic mass \nomunit{183.85 u}}
 \nomenclature{$m_{\rm H}$}{Protium mean atomic mass \nomunit{1.00784 u}}
 \nomenclature{$m_{\rm T}$}{Tritium mean atomic mass \nomunit{3.0161 u}}
@@ -191,15 +176,11 @@ Käyttämällä pienikokoisia järjestelmiä, olemme onnistuneet simuloimaan iso
 \cleardoublepage %fixes the position of bibliography in bookmarks
 \phantomsection
 
-\addcontentsline{toc}{chapter}{\bibname} % This lines adds the bibliography to the ToC
+\addcontentsline{toc}{chapter}{\bibname} % Add the bibliography to the ToC
 \bibliographystyle{IEEEtran}
-%\bibliographystyle{unsrt} % numbering 
-%\bibliographystyle{apalike} % name, year
 \renewcommand{\bibname}{References}
 \bibliography{bibliography}
 
 %--------------------------------------------------------------------
-%\section*{Bilagor}
-%\addcontentsline{toc}{subsection}{Bilaga 1}
 
 \end{document}

@@ -84,9 +84,6 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \begin{tikzpicture}
 \matrix (m)[matrix of nodes, column  sep=1.5cm,row  sep=5mm, align=center, nodes={rectangle,draw, anchor=center} ]{
     |[block]| {\small Set initial conditions $\mathbf{r}_i(t_0)$ and $\mathbf{v}_i(t_0)$, set a timestep $dt$ and reset $\mathbf{a}=0$, $_0t=0$}              &  \\
-    %|[block]| {\textit{Estimation step:}\\ Estimate new atom positions; \\
-    %  Move atoms: $\mathbf{r}_i^{(e)} = \mathbf{r}_i^{(j)} + \mathbf{v}^{(j)}dt + \mathbf{a}\frac{1}{2}dt^2 + ...$\\
-    %  Update velocities: $\mathbf{v}^{(e)}=\mathbf{v}^{(f)}+\mathbf{a}dt + ...$}              &  \\
    |[block]| {\small Calculate $\mathbf{F}_i = -\mathbf{\nabla} V(\mathbf{r}_i)$ and $\mathbf{a}_i=\mathbf{F}_i/m_i$}              &  \\
    |[block]| {\small Adjust atom positions based on the new $\mathbf{a}_i$;\\
      Move atoms: $\mathbf{r}_i(t_{n+1}) = \mathbf{r}_i(t_n) + f(\mathbf{a}_i,\Delta t)$\\
@@ -103,7 +100,6 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \path [>=latex,->] (m-4-1) edge (m-5-1);
 \path [>=latex,->] (m-5-1) edge (m-6-1);
 \path [>=latex,->] (m-6-1) edge (m-7-1);
-%\path [>=latex,->] (m-7-1) edge (m-8-1);
 \draw [>=latex,->] (m-7-1.west) -- node[above] {no} ++(-4,0cm) |- (m-2-1.west);
 \draw [>=latex,->] (m-7-1.south) -- node[right] {yes}(m-8-1);
 \end{tikzpicture}
@@ -161,8 +157,3 @@ The force-decomposition algorithm, on the other hand, divides the cell into thre
 This method limits the communication required to only neighbouring processors, giving a theoretical scaling of $O(N/P)$ for largely parallel simulations.
 The spatial-decomposition algorithm, finally, involves appointing force calculation loops to separate processors.
 This method is fairly non-trivial to grasp and achieves at best a scaling of $O(N/\sqrt{P})$, still lagging behind the spatial-decomposition algorithm in performance \cite{fincham1987parallel,lammpsMD}.
-
-% ---------------------------------------------------------------------------------------------------
-% \section{Analysis of the Results}
-% --------------------------------------------------------------------------------------------------- 
-

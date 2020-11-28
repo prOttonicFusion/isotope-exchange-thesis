@@ -71,9 +71,6 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
    |[block] (initII)| {\small Relax and Deposit H} & \\
     |[block] (MD)| {\small Run MD for 5000 steps}          &  \\
     |[block] (DelT)| {\small Delete T atoms for which $d_i > d_{\text{rmv}}$}          &  \\
-%    |[block] (Calcd)| {Calculate $d_i$}          &  \\
-%    |[decision] (IsOut)| {$d_i > d_{\rm{rmv}}$?}              &  \\
-%       & |[smallblock] (Rmv)| {Remove $i$th T}         &  \\
    |[decision] (IsEnd)| {\small End condition reached?}              &  \\
    |[block] (End)| {\small Save results and quit}   & \\
 };
@@ -81,11 +78,6 @@ cloud/.style = {draw, ellipse,fill=red!20, node distance=3cm,
 \path [>=latex,->] (initII) edge (MD);
 \path [>=latex,->] (MD) edge (DelT);
 \path [>=latex,->] (DelT) edge (IsEnd);
-%\path [>=latex,->] (MD) edge (Calcd);
-%\path [>=latex,->] (Calcd) edge (IsOut);
-%\draw [>=latex,->] (IsOut.east) -| node[above, near start] {yes} (Rmv.north);
-%\draw [>=latex,->] (IsOut.south) -- node[right] {no}(IsEnd);
-%\draw [>=latex,->] (Rmv.south) |- (IsEnd.north);
 \draw [>=latex,->] (IsEnd.west) -- node[above] {no} ++(-2,0cm) |- (MD.west);
 \draw [>=latex,->] (IsEnd.south) -- node[right] {yes}(End);
 \end{tikzpicture}
@@ -145,13 +137,10 @@ The dislocation, together with its periodic images, is visualized using a defect
 % ---------------------------------------------------------------------------------------------------
 \subsection{Grain Boundaries}
 % ---------------------------------------------------------------------------------------------------
-% $\Sigma$5\hkl{310}/\hkl[001]
 For simulating isotope exchange in W grain boundaries, we used a system containing an arbitrarily chosen \hkl(310)\hkl[001] tilt grain boundary. 
 The simulation cell was created by growing together two separate tungsten lattices, each rotated through $\pm18.43^\circ$, respectively, around the $z$-axis. 
 As the $x$-axes of the lattices point along \hkl<310> directions, we have a system with a periodicity of $\sqrt{10}~a$ along the $x$- and $y$-axes, and $a$ along the $z$-axis. 
 In order to minimize the number of atoms needed to simulate the system we can set $y >> x \approx z$ and again use periodic boundaries.
-
-% Zhou_2009_H_behaviour_in_W_grain_boudnary_FP.pdf
 
 The data file describing the simulation cell was created using Atomsk \cite{hirel2015atomsk} to grow out the intersecting lattices of the two grains from predefined starting points. 
 Overlapping W atoms were later manually removed to produce a clean \hkl(310)\hkl[001] grain boundary.
