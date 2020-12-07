@@ -16,7 +16,7 @@ Using small system sizes and spatially-parallelised simulation tools, we have ma
 
 ## Building
 
-## Requirements
+### Requirements
 - [TexLive](https://www.tug.org/texlive/) or similar
 - BibTex & MakeIndex (usually distributed with LaTex)
 - The following LaTex packages
@@ -33,7 +33,7 @@ Using small system sizes and spatially-parallelised simulation tools, we have ma
 	- tikz
 	- titlesec, titletoc
 
-## Compilation
+### Compilation
 The thesis can be compiled using the proved `Makefile`, by simply running
 ```
 make
