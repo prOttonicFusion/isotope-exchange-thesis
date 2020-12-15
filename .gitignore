@@ -280,3 +280,6 @@ __pycache__/
 
 # Makeindex log files
 *.lpz
+
+# Build output
+*.pdf
