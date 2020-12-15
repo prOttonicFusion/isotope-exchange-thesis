@@ -1,4 +1,4 @@
-# A Molecular Dynamics Study of Hydrogen Isotope Exchange in Tungsten
+# A Computational Study of Isotope Exchange as a Tritium Removal Tool in Tungsten
 
 A PDF version of the thesis can be found at http://urn.fi/URN:NBN:fi:hulib-202012114996
 
