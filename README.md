@@ -1,5 +1,7 @@
 # A Molecular Dynamics Study of Hydrogen Isotope Exchange in Tungsten
 
+A PDF version of the thesis can be found at http://urn.fi/URN:NBN:fi:hulib-202012114996
+
 ## Abstract
 Due to its exceptional thermal properties and irradiation resistance, tungsten is the material of choice for critical plasma-facing components in many leading thermonuclear fusion projects.
 Owing to the natural retention of hydrogen isotopes in materials such as tungsten, the safety of a fusion device depends heavily on the inventory of radioactive tritium in its plasma-facing components. 
